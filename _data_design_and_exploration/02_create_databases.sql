@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS sdr_event (
   part_since_code          varchar(10),
 
   -- COMPONENT (event-specific)
+  
   component_make           varchar(50),
   component_model          varchar(100),
   component_name           varchar(100),
@@ -125,4 +126,14 @@ SELECT table_name
 FROM information_schema.tables
 WHERE table_schema = 'public';
 
---
+-- Identify Table Columns
+SELECT table_name, column_name, data_type, is_nullable
+FROM information_schema.columns
+WHERE table_schema = 'public'
+ORDER BY table_name ASC;
+
+-- Ensure correct # of attributes per table
+SELECT table_name, count(column_name)
+FROM information_schema.columns
+WHERE table_schema = 'public'
+GROUP BY table_name;
