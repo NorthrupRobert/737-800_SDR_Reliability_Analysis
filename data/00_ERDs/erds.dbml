@@ -1,103 +1,123 @@
+////////////////////////////////////////////////////
+// MASTER DATA TABLES
+////////////////////////////////////////////////////
+
 Table aircraft {
-  aircraft_id          serial        [pk]
-  tail_number          varchar(20)   [not null, unique]
+  aircraft_id          int [pk, increment]
+  registry_n_number    varchar [unique]
   aircraft_make        varchar(50)
   aircraft_model       varchar(50)
   aircraft_serial      varchar(50)
-  total_time           numeric
-  total_cycles         numeric
+  aircraft_total_time  int
+  aircraft_total_cycles int
 }
 
 Table operator {
-  operator_id          serial        [pk]
-  operator_code        varchar(10)   [not null, unique]
+  operator_id          int [pk, increment]
+  operator_code        varchar(10) [not null, unique]
   operator_name        varchar(100)
 }
 
 Table ata_chapter {
-  jasc_code            varchar(10)   [pk]
+  jasc_code            varchar(10) [pk]
   ata_description      varchar(200)
 }
 
-Table structural_location {
-  location_id          serial        [pk]
-  fuselage_station_from varchar(50)
-  fuselage_station_to   varchar(50)
-  stringer_from         varchar(50)
-  stringer_from_side    varchar(10)
-  stringer_to           varchar(50)
-  stringer_to_side      varchar(10)
-  wing_station_from     varchar(50)
-  wing_station_from_side varchar(10)
-  wing_station_to       varchar(50)
-  wing_station_to_side  varchar(10)
-  butt_line_from        varchar(50)
-  butt_line_from_side   varchar(10)
-  butt_line_to          varchar(50)
-  butt_line_to_side     varchar(10)
-  water_line_from       varchar(50)
-  water_line_to         varchar(50)
-  crack_length          varchar(50)
-  number_of_cracks      int
-  corrosion_level       varchar(50)
-  structural_other      text
-}
-
-Table part {
-  part_id              serial        [pk]
-  part_make            varchar(50)
-  part_name            varchar(100)
-  part_number          varchar(100)
-  part_serial_number   varchar(100)
-  part_condition       varchar(50)
-  part_location        varchar(100)
-  part_total_time      numeric
-  part_total_cycles    numeric
-  part_time_since      numeric
-  part_since_code      varchar(10)
-}
-
-Table component {
-  component_id         serial        [pk]
-  component_make       varchar(50)
-  component_model      varchar(100)
-  component_name       varchar(100)
-  component_part_number varchar(100)
-  component_serial_number varchar(100)
-  component_location   varchar(100)
-  component_total_time numeric
-  component_total_cycles numeric
-  component_time_since numeric
-  component_since_code varchar(10)
-}
+////////////////////////////////////////////////////
+// SDR EVENT TABLE
+////////////////////////////////////////////////////
 
 Table sdr_event {
-  sdr_id               serial        [pk]
-  operator_control_number varchar(50)
-  difficulty_date      date
-  submission_date      date
-  operator_designator  varchar(10)
-  submitter_designator varchar(10)
-  submitter_type_code  varchar(10)
-  receiving_region_code varchar(10)
+  sdr_id                   int [pk, increment]
+  operator_control_number  varchar(50)
+  difficulty_date          date
+  submission_date          date
+  operator_designator      varchar(10)
+  submitter_designator     varchar(10)
+  submitter_type_code      varchar(10)
+  receiving_region_code    varchar(10)
   receiving_district_office varchar(10)
-  sdr_type             varchar(10)
-  nature_condition_a   varchar(50)
-  nature_condition_b   varchar(50)
-  nature_condition_c   varchar(50)
-  precautionary_proc_a varchar(50)
-  precautionary_proc_b varchar(50)
-  precautionary_proc_c varchar(50)
-  precautionary_proc_d varchar(50)
-  stage_of_operation   varchar(50)
-  how_discovered       varchar(50)
-  discrepancy          text
+  sdr_type                 varchar(10)
+  nature_condition_a       varchar(50)
+  nature_condition_b       varchar(50)
+  nature_condition_c       varchar(50)
+  precautionary_proc_a     varchar(50)
+  precautionary_proc_b     varchar(50)
+  precautionary_proc_c     varchar(50)
+  precautionary_proc_d     varchar(50)
+  stage_of_operation       varchar(50)
+  how_discovered           varchar(50)
+  discrepancy              text
 
-  // Foreign keys
-  aircraft_id          int           [ref: < aircraft.aircraft_id]
-  operator_id          int           [ref: < operator.operator_id]
-  jasc_code            varchar(10)   [ref: < ata_chapter.jasc_code]
-  part_id              int           [ref: < part.part_id]
-  component_id         int           [ref: < component.component_id]
-  location_id          int           [ref: < structural_location.location_id]
+  aircraft_id              int
+  operator_id              int
+  jasc_code                varchar(10)
+
+  // ENGINE (event-specific)
+  engine_make              varchar(50)
+  engine_model             varchar(100)
+  engine_serial_number     varchar(100)
+  engine_total_time        int
+  engine_total_cycles      int
+
+  // PROPELLER (event-specific)
+  propeller_make           varchar(50)
+  propeller_model          varchar(100)
+  propeller_serial_number  varchar(100)
+  propeller_total_time     int
+  propeller_total_cycles   int
+
+  // PART (event-specific)
+  part_make                varchar(50)
+  part_name                varchar(100)
+  part_number              varchar(100)
+  part_serial_number       varchar(100)
+  part_condition           varchar(50)
+  part_location            varchar(100)
+  part_total_time          int
+  part_total_cycles        int
+  part_time_since          int
+  part_since_code          varchar(10)
+
+  // COMPONENT (event-specific)
+  component_make           varchar(50)
+  component_model          varchar(100)
+  component_name           varchar(100)
+  component_part_number    varchar(100)
+  component_serial_number  varchar(100)
+  component_location       varchar(100)
+  component_total_time     int
+  component_total_cycles   int
+  component_time_since     int
+  component_since_code     varchar(10)
+
+  // STRUCTURAL LOCATION (event-specific)
+  fuselage_station_from    varchar(50)
+  fuselage_station_to      varchar(50)
+  stringer_from            varchar(50)
+  stringer_from_side       varchar(10)
+  stringer_to              varchar(50)
+  stringer_to_side         varchar(10)
+  wing_station_from        varchar(50)
+  wing_station_from_side   varchar(10)
+  wing_station_to          varchar(50)
+  wing_station_to_side     varchar(10)
+  butt_line_from           varchar(50)
+  butt_line_from_side      varchar(10)
+  butt_line_to             varchar(50)
+  butt_line_to_side        varchar(10)
+  water_line_from          varchar(50)
+  water_line_to            varchar(50)
+  crack_length             varchar(50)
+  number_of_cracks         int
+  corrosion_level          varchar(50)
+  structural_other         text
 }
+
+////////////////////////////////////////////////////
+// RELATIONSHIPS
+////////////////////////////////////////////////////
+
+Ref: sdr_event.aircraft_id > aircraft.aircraft_id
+Ref: sdr_event.operator_id > operator.operator_id
+Ref: sdr_event.jasc_code > ata_chapter.jasc_code

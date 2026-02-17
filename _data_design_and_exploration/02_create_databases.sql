@@ -1,8 +1,8 @@
 -- ============================
--- MASTER DATA TABLES
+-- DATA TABLES
 -- ============================
 
-CREATE TABLE aircraft (
+CREATE TABLE IF NOT EXISTS aircraft (
   aircraft_id          serial PRIMARY KEY,
   registry_n_number    varchar UNIQUE,
   aircraft_make        varchar(50),
@@ -12,22 +12,21 @@ CREATE TABLE aircraft (
   aircraft_total_cycles int
 );
 
-CREATE TABLE operator (
+
+CREATE TABLE IF NOT EXISTS operator (
   operator_id          serial PRIMARY KEY,
   operator_code        varchar(10) NOT NULL UNIQUE,
   operator_name        varchar(100)
 );
 
-CREATE TABLE ata_chapter (
+
+CREATE TABLE IF NOT EXISTS ata_chapter (
   jasc_code            varchar(10) PRIMARY KEY,
   ata_description      varchar(200)
 );
 
--- ============================
--- SDR EVENT TABLE
--- ============================
 
-CREATE TABLE sdr_event (
+CREATE TABLE IF NOT EXISTS sdr_event (
   sdr_id                   serial PRIMARY KEY,
   operator_control_number  varchar(50),
   difficulty_date          date,
@@ -54,27 +53,21 @@ CREATE TABLE sdr_event (
   operator_id              int REFERENCES operator(operator_id),
   jasc_code                varchar(10) REFERENCES ata_chapter(jasc_code),
 
-  -- ============================
   -- ENGINE (event-specific)
-  -- ============================
   engine_make              varchar(50),
   engine_model             varchar(100),
   engine_serial_number     varchar(100),
   engine_total_time        int,
   engine_total_cycles      int,
 
-  -- ============================
   -- PROPELLER (event-specific)
-  -- ============================
   propeller_make           varchar(50),
   propeller_model          varchar(100),
   propeller_serial_number  varchar(100),
   propeller_total_time     int,
   propeller_total_cycles   int,
 
-  -- ============================
   -- PART (event-specific)
-  -- ============================
   part_make                varchar(50),
   part_name                varchar(100),
   part_number              varchar(100),
@@ -86,9 +79,7 @@ CREATE TABLE sdr_event (
   part_time_since          int,
   part_since_code          varchar(10),
 
-  -- ============================
   -- COMPONENT (event-specific)
-  -- ============================
   component_make           varchar(50),
   component_model          varchar(100),
   component_name           varchar(100),
@@ -100,9 +91,7 @@ CREATE TABLE sdr_event (
   component_time_since     int,
   component_since_code     varchar(10),
 
-  -- ============================
   -- STRUCTURAL LOCATION (event-specific)
-  -- ============================
   fuselage_station_from    varchar(50),
   fuselage_station_to      varchar(50),
   stringer_from            varchar(50),
@@ -124,3 +113,16 @@ CREATE TABLE sdr_event (
   corrosion_level          varchar(50),
   structural_other         text
 );
+
+
+
+-- ============================
+-- CHECK FOR PROPER EXECUTION
+-- ============================
+
+-- Table Names . . .
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public';
+
+--
