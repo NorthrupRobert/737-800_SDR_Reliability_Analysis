@@ -46,7 +46,7 @@ VECTRA SPACE (Fictional Airline) has been operating for the past 150 years, prov
 FAA Service Difficulty Reports (SDR) are used as a proxy for real-world maintenance events.”
 
 ### Problem Statement
-**How can an aviation organization reduce unscheduled maintenance events and their operational and supply chain impacts by identifying high‑risk components, predicting failures, and optimizing parts availability?**
+**How can an aviation organization with a fleet of 737-800s reduce unscheduled maintenance events and their operational and supply chain impacts by identifying high‑risk components, predicting failures, and optimizing parts availability?**
 
 ### Project Aim
 **LIST HERE**

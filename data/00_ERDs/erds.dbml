@@ -1,187 +1,103 @@
-Table sdr {
-  operating_control_number varchar [primary key]
-  difficulty_date datetime
-  submission_date datetime
-  operator_designator varchar
-  submit_designator varchar
-  submit_type char
-  region_code varchar
-  receiving_district_office int
-  sdr_type char
-  jasc_code varchar
-  nat_of_cond_a char
-  nat_of_cond_b char
-  nat_of_cond_c char
-  precautionary_procedure_a varchar
-  precautionary_procedure_b varchar
-  precautionary_procedure_c varchar
-  precautionary_procedure_d varchar
-  stage_of_operation_code varchar
-  how_discovered_code varchar
-  crack_length int
-  number_of_cracks int
-  corrosion_level int
-  structural_other	text //e.g. WING LEADING EDGE, R STAB STA 184.70, CUSTOMER REQUEST, KRAS 206, SLAT #4, L STAB STA 129.50
-  discrepancy text
-
-  //Foreign keys to normalized tables
-  aircraft_serial varchar [ref: < aircraft.serial]
-  part_serial_number varchar [ref: < part.serial]
-  component_serial_number varchar [ref: < component.serial]
-}
-
 Table aircraft {
-  serial varchar [primary key]
-  registry_n_number varchar
-  make varchar
-  model varchar
-  total_time float
-  total_cycles int
+  aircraft_id          serial        [pk]
+  tail_number          varchar(20)   [not null, unique]
+  aircraft_make        varchar(50)
+  aircraft_model       varchar(50)
+  aircraft_serial      varchar(50)
+  total_time           numeric
+  total_cycles         numeric
 }
 
-Table engine {
-  serial varchar [primary key]
-  make varchar
-  model varchar
-  total_time float
-  total_cycles int
-  aircraft_serial varchar [ref: < aircraft.serial]
+Table operator {
+  operator_id          serial        [pk]
+  operator_code        varchar(10)   [not null, unique]
+  operator_name        varchar(100)
 }
 
-Table propeller {
-  serial_number varchar [primary key]
-  make varchar
-  model varchar
-  total_time int
-  total_cycles int
-  aircraft_serial varchar [ref: < aircraft.serial]
-}
-
-Table work_order {
-  id varchar [primary key]
-  sdr_operating_control_number varchar [Ref: < sdr.operating_control_number]
-  date_discovered datetime
-  discovery_code varchar //e.g. OP, V
-  discrepancy text
-  corrective_action text
-  part_number varchar
-  part_name varchar
-  part_serial varchar [ref: < part.serial]
-  jasc_code varchar
-  maintenance_type varchar //e.g. Line, Base, Overnight, ...
-}
-
-Table part {
-  serial varchar [primary key]
-  component_serial varchar [Ref: < component.serial]
-  make varchar
-  name varchar
-  part_number varchar [ref: < parts_master.part_number]
-  condition varchar
-  location text //e.g. ZONE 200, STALL, GIRT BAR, BLEED SYS, NR 1 ENGINE, ZONE 600 FLAP, EMERGENCY LIGHT, ...
-  total_time int
-  total_cycles int
-  time_since int
-  since_code char
-}
-
-Table component {
-  serial varchar [primary key]
-  aircraft_serial varchar [ref: < aircraft.serial]
-  name varchar
-  make varchar
-  model varchar
-  part_number varchar
-  location varchar
-  total_time int
-  total_cycles int
-  time_since int
-  since_code char
+Table ata_chapter {
+  jasc_code            varchar(10)   [pk]
+  ata_description      varchar(200)
 }
 
 Table structural_location {
-  id int [primary key]
-  sdr_operating_control_number varchar [ref: < sdr.operating_control_number]
-  from varchar //e.g. 727D, 947, 950, 147.9, 1006+5
-  to varchar
-  stringer_from varchar
-  string_from_side char //e.g. L, R
-  stringer_to varchar
-  string_to_side char
-  WingStationFrom	varchar
-  WingStationFromSide	char
-  WingStationTo	varchar
-  WingStationToSide	char
-  ButtLineFrom varchar
-  ButtLineFromSide	char
-  ButtlineTo varchar
-  ButtlineToSide	char
-  WaterLineFrom	varchar
-  WaterLineTo varchar
+  location_id          serial        [pk]
+  fuselage_station_from varchar(50)
+  fuselage_station_to   varchar(50)
+  stringer_from         varchar(50)
+  stringer_from_side    varchar(10)
+  stringer_to           varchar(50)
+  stringer_to_side      varchar(10)
+  wing_station_from     varchar(50)
+  wing_station_from_side varchar(10)
+  wing_station_to       varchar(50)
+  wing_station_to_side  varchar(10)
+  butt_line_from        varchar(50)
+  butt_line_from_side   varchar(10)
+  butt_line_to          varchar(50)
+  butt_line_to_side     varchar(10)
+  water_line_from       varchar(50)
+  water_line_to         varchar(50)
+  crack_length          varchar(50)
+  number_of_cracks      int
+  corrosion_level       varchar(50)
+  structural_other      text
 }
 
-Table failure {
-  id int [primary key]
-  component_serial varchar [ref: < component.serial]
-  part_serial varchar [ref: < part.serial]
-  failure_date datetime
-  failure_mode varchar //e.g. leak, crack, short, seized, ...
-  detected_by varchar //e.g. pilot, maintenance, etc
-  sdr_operating_control_number varchar [ref: < sdr.operating_control_number]
+Table part {
+  part_id              serial        [pk]
+  part_make            varchar(50)
+  part_name            varchar(100)
+  part_number          varchar(100)
+  part_serial_number   varchar(100)
+  part_condition       varchar(50)
+  part_location        varchar(100)
+  part_total_time      numeric
+  part_total_cycles    numeric
+  part_time_since      numeric
+  part_since_code      varchar(10)
 }
 
-Table bench_stock {
-  part_number varchar [ref: < parts_master.part_number]
-  location varchar // e.g. RNO, LAX, JFK
-  quantity_on_hand int
-  reorder_point int
-  reorder_quantity int
-  unit_cost float
-  lead_time_days int
-  supplier_id varchar [ref: < supplier.id]
-
-  primary key (part_number, location)
+Table component {
+  component_id         serial        [pk]
+  component_make       varchar(50)
+  component_model      varchar(100)
+  component_name       varchar(100)
+  component_part_number varchar(100)
+  component_serial_number varchar(100)
+  component_location   varchar(100)
+  component_total_time numeric
+  component_total_cycles numeric
+  component_time_since numeric
+  component_since_code varchar(10)
 }
 
-Table supplier {
-  id varchar [primary key]
-  name varchar
-  on_time_delivery_rate float
-  avg_delay_days int
-  quality_rating float
+Table sdr_event {
+  sdr_id               serial        [pk]
+  operator_control_number varchar(50)
+  difficulty_date      date
+  submission_date      date
+  operator_designator  varchar(10)
+  submitter_designator varchar(10)
+  submitter_type_code  varchar(10)
+  receiving_region_code varchar(10)
+  receiving_district_office varchar(10)
+  sdr_type             varchar(10)
+  nature_condition_a   varchar(50)
+  nature_condition_b   varchar(50)
+  nature_condition_c   varchar(50)
+  precautionary_proc_a varchar(50)
+  precautionary_proc_b varchar(50)
+  precautionary_proc_c varchar(50)
+  precautionary_proc_d varchar(50)
+  stage_of_operation   varchar(50)
+  how_discovered       varchar(50)
+  discrepancy          text
+
+  // Foreign keys
+  aircraft_id          int           [ref: < aircraft.aircraft_id]
+  operator_id          int           [ref: < operator.operator_id]
+  jasc_code            varchar(10)   [ref: < ata_chapter.jasc_code]
+  part_id              int           [ref: < part.part_id]
+  component_id         int           [ref: < component.component_id]
+  location_id          int           [ref: < structural_location.location_id]
 }
-
-Table purchase_order {
-  id int [primary key]
-  supplier_id varchar [ref: < supplier.id]
-  part_number varchar [ref: < parts_master.part_number]
-  quantity int
-  order_date datetime
-  expected_delivery_date datetime
-  actual_delivery_date datetime
-  unit_cost float
-  status varchar   // e.g. ordered, shipped, received, delayed
-}
-
-Table parts_master {
-  part_number varchar [primary key]
-  make varchar
-  name varchar
-}
-
-Table work_order_part_usage {
-  work_order_id varchar [ref: < work_order.id]
-  part_number varchar [ref: < parts_master.part_number]
-  location varchar
-  quantity_used int
-
-  primary key (work_order_id, part_number, location)
-}
-
-Table serialized_part_inventory {
-  serial varchar [primary key, ref: < part.serial]
-  location varchar        // e.g. RNO, LAX, JFK, Vendor, Shop
-  status varchar          // e.g. serviceable, unserviceable, in_repair, in_transit
-  last_moved datetime
-}
-
