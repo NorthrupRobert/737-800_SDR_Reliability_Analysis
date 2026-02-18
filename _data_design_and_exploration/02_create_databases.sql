@@ -20,9 +20,18 @@ CREATE TABLE IF NOT EXISTS operator (
 );
 
 
+-- THIS IS WRONG!!! STORING JASC_CODE AS THE PRIMARY KEY FOR ATA_CHANNEL!?!?!
 CREATE TABLE IF NOT EXISTS ata_chapter (
   jasc_code            varchar(10) PRIMARY KEY,
   ata_description      varchar(200)
+);
+
+
+-- NEW TABLE!!!
+CREATE TABLE IF NOT EXISTS jasc_code (
+  jasc_code varchar(10) PRIMARY KEY,
+  ata_chapter varchar(2),
+  jasc_description varchar(200)
 );
 
 
@@ -80,7 +89,7 @@ CREATE TABLE IF NOT EXISTS sdr_event (
   part_since_code          varchar(10),
 
   -- COMPONENT (event-specific)
-  
+
   component_make           varchar(50),
   component_model          varchar(100),
   component_name           varchar(100),
