@@ -7,4 +7,5 @@ import scipy as sp
 import io
 import os
 import re
-import psycopg2
+import psycopg2 # interface with running Vectra DB (PostgreSQL connection)
+from psycopg2.extras import execute_values
