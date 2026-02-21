@@ -2,8 +2,8 @@
   <img src="/assets/vectra logo white.png" width="400">
 </p>
 
-# 737-800 Maintenance, Reliability, and Supply Chain Analysis
-### *SUBTITLE HERE*
+# 737-800 Maintenance, Reliability, and Supply Chain Analysis (IN PROGRESS)
+### *Exploring Failure Patterns, Operator Trends, and Component Reliability Through JASC Taxonomy*
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Active-brightgreen"></a>
@@ -41,28 +41,34 @@ Data Analytics | Aerospace | Community Impact
 ---
 
 ## EXECUTIVE SUMMARY
-VECTRA SPACE (Fictional Airline) has been operating for the past 150 years, providing top of the line service . . .
-“This project simulates the maintenance and operational challenges of a Boeing 737‑800 fleet operated by a mid‑size U.S. airline.
-FAA Service Difficulty Reports (SDR) are used as a proxy for real-world maintenance events.”
+VECTRA SPACE (mid‑size U.S. airline) operates a fleet of Boeing 737‑800 aircraft and faces the same maintenance, reliability, and supply‑chain pressures seen across the commercial aviation industry. This project simulates those real‑world challenges by transforming FAA Service Difficulty Reports (SDRs) into a structured, analytics‑ready dataset that models unscheduled maintenance events, component failures, and operational disruptions.
+
+Using SDRs as a proxy for real maintenance activity, the project builds an end‑to‑end pipeline that extracts, cleans, normalizes, and analyzes aircraft reliability data through ATA/JASC taxonomies, operator designators, and component‑level event patterns. The goal is to demonstrate how a modern airline could leverage data engineering and reliability analytics to improve fleet performance, reduce delays, and optimize parts availability.
 
 ### Problem Statement
 **How can an aviation organization with a fleet of 737-800s reduce unscheduled maintenance events and their operational and supply chain impacts by identifying high‑risk components, predicting failures, and optimizing parts availability?**
 
-### Project Aim
-**LIST HERE**
+### Objectives
+To design a realistic, end‑to‑end reliability analytics workflow that transforms raw FAA SDR data into actionable insights for maintenance planning, component risk assessment, and supply‑chain decision‑making.
 
 ### Dashboards
-**DASHBOARDS HERE**
+- Component‑level failure frequency
+- ATA/JASC chapter trends
+- Operator‑level event distributions
+- Time‑based reliability patterns
+- High‑risk components and emerging failure modes
 
 ### Key Findings
-**LIST HERE**
+**(To be completed as analysis progresses)**
+- Components with disproportionately high SDR rates
+- ATA chapters driving the majority of unscheduled events
+- Seasonal or operational patterns in failure occurrence
+- Gaps in parts availability contributing to extended AOG time
 
 <div style="font-size: 0.85em">
 **Resources**
 
 - Click here to access the Dashboards and Project Data.
-- Click here to access the [Performance Executive Summary]
-- Click here to access the [Impact Analysis Slide Deck]
 
 </div>
 
