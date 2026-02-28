@@ -155,6 +155,10 @@ The synthetic supply‑chain attributes and the logic that produces them were de
 ---
 
 ## INSIGHTS DEEP DIVE
+![img1](/assets/explore_pics/Discrepancies%20vs%20Grounded%20Discrepancies%20by%20JASC.png)
+![img2](/assets/explore_pics/failure%20mode%20by%20ata.png)
+![img3](/assets/explore_pics/grounding%20atas%20over%20time.png)
+
 ### 1. INSIGHT
 ONE SENTENCE OVERVIEW
 - SUPPORTING STATEMENT 1
