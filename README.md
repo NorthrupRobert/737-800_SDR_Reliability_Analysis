@@ -46,7 +46,7 @@ Data Analytics | Aerospace | Community Impact
 Using SDRs as a proxy for real maintenance activity, the project builds an end‑to‑end pipeline that extracts, cleans, normalizes, and analyzes aircraft reliability data through ATA/JASC taxonomies, operator designators, and component‑level event patterns. The goal is to demonstrate how a modern airline could leverage data engineering and reliability analytics to improve fleet performance, reduce delays, and optimize parts availability.
 
 ### Problem Statement
-**Analyzing maintenance How can an aviation organization with a fleet of 737-800s reduce unscheduled maintenance events and their operational and supply chain impacts by identifying high‑risk components, predicting failures, and optimizing parts availability?**
+**What maintenance actions can American Airlines implement in their 737‑800 fleet to target systems and failure modes that drive high operational disruption by reducing the operational impact of severe maintenance events through ATA and JASC taxonomy?**
 
 ### Objectives
 To design a realistic, end‑to‑end reliability analytics workflow that transforms raw FAA SDR data into actionable insights for maintenance planning, component risk assessment, and supply‑chain decision‑making.
