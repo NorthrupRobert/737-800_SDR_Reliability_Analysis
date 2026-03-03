@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="/assets/vectra logo white.png" width="400">
+  <img src="/assets/aa logo.png" width="400">
 </p>
 
-# 737-800 Maintenance, Reliability, and Supply Chain Analysis (IN PROGRESS)
+# American Airlines 737-800 AOG, Maintenance, and Reliability Analysis (IN PROGRESS)
 ### *Exploring Failure Patterns, Operator Trends, and Component Reliability Through JASC Taxonomy*
 
 <p align="center">
@@ -41,7 +41,7 @@ Data Analytics | Aerospace | Community Impact
 ---
 
 ## EXECUTIVE SUMMARY
-VECTRA SPACE (mid‑size U.S. airline) operates a fleet of Boeing 737‑800 aircraft and faces the same maintenance, reliability, and supply‑chain pressures seen across the commercial aviation industry. This project simulates those real‑world challenges by transforming FAA Service Difficulty Reports (SDRs) into a structured, analytics‑ready dataset that models unscheduled maintenance events, component failures, and operational disruptions.
+**American Airlines** operates a fleet of Boeing 737‑800 aircraft and faces the same maintenance, reliability, and supply‑chain pressures seen across the commercial aviation industry. This project simulates those real‑world challenges by transforming FAA Service Difficulty Reports (SDRs) into a structured, analytics‑ready dataset that models unscheduled maintenance events, component failures, and operational disruptions.
 
 Using SDRs as a proxy for real maintenance activity, the project builds an end‑to‑end pipeline that extracts, cleans, normalizes, and analyzes aircraft reliability data through ATA/JASC taxonomies, operator designators, and component‑level event patterns. The goal is to demonstrate how a modern airline could leverage data engineering and reliability analytics to improve fleet performance, reduce delays, and optimize parts availability.
 
