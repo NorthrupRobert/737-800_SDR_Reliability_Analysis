@@ -9,3 +9,4 @@ import os
 import re
 import psycopg2 # interface with running Vectra DB (PostgreSQL connection)
 from psycopg2.extras import execute_values
+import sql_python_interface as interface
