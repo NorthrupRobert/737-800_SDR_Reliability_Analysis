@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/assets/aa logo.png" width="400">
+  <img src="/assets/aa logo.png" width="600">
 </p>
 
 # American Airlines 737-800 AOG, Maintenance, and Reliability Analysis (IN PROGRESS)
