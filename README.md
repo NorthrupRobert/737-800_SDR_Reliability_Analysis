@@ -2,8 +2,8 @@
   <img src="/assets/aa logo.png" width="600">
 </p>
 
-# American Airlines 737-800 AOG, Maintenance, and Reliability Analysis (IN PROGRESS)
-### *Exploring Failure Patterns, Operator Trends, and Component Reliability Through JASC Taxonomy*
+# American Airlines 737-800 Safety Failure, Maintenance, and Reliability Analysis (IN PROGRESS)
+### *Exploring Failure Patterns, Operator Trends, and Component Reliability Through JASC Taxonomy and Natural Language Processing (NLP)*
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Active-brightgreen"></a>
@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Database/Querying-PostgreSQL-white"></a>
   <img src="https://img.shields.io/badge/Analysis-Python-gold"></a>
   <img src="https://img.shields.io/badge/Visualization-Tableau-hotpink"></a>
-  <img src="https://img.shields.io/badge/Updated-Feb%202026-lightgrey"></a>
+  <img src="https://img.shields.io/badge/Updated-Mar%202026-lightgrey"></a>
 </p>
 
 ---
@@ -32,11 +32,11 @@ Data Analytics | Aerospace | Community Impact
 ---
 
 ## TABLE OF CONTENTS
-- [Executive_Summary](#executive-summary)
-- [Background](#background)
-- [Data_Structure_Overview](#data-structure-overview)
-- [Insights_Deep_Dive](#insights-deep-dive)
-- [Recommended_Actions](#recommended-actions)
+1. [Executive Summary](#executive-summary)
+2. [Background](#background)
+3. [Data Structure Overview](#data-structure-overview)
+4. [Insights Deep Dive](#insights-deep-dive)
+5. [Recommended Actions](#recommended-actions)
 
 ---
 
@@ -61,12 +61,16 @@ To design a realistic, end‑to‑end reliability analytics workflow that transf
 ### Key Findings
 **(To be completed as analysis progresses)**
 - The AC/Pressurization (-21) system is the biggest driver for Aircraft on Ground (AOG), diversions, and in Flight Emergency (IFE) events, closely followed by Landing Gear (-32).
-- Failure modes for AC primarily centered around
+- Failure modes for AC primarily centered around fault and fire.
 - 47% of level 3 severity events were due to the AC Distribution System (JASC 2120)
-- Failures trended around the ___ season
+- Failures for the AC system trended around the summer season
+- Odor-related events in flight (burning smell, wet dog, etc.) contributed to the most AC grounding writeups
+- Failures overwhelming could not be duplicated by maintenance, primarily for odor discrepancies, though the most 
 
 ### Recommendations
 1. **Request Engineering review for 2120** 
+2. Review A, B, C checks for filters and other common grounding writeups... replace filters outright?
+3. Impose internal limits on key valves during op chks to limit failures in these critical components for high severity events.
 
 For further details, please see [Recommended Actions](#recommended-actions).
 
@@ -112,45 +116,22 @@ To view the full ERD, click [here](/data/00_ERDs/erd.png).
 
 ### Why Normalization Was Needed
 
-## Data Sources
-Commercial aviation data is notoriously difficult to obtain. While the FAA publishes SDRs (Service Difficulty Reports), the operational datasets that airlines actually use—work orders, parts catalogs, inventory levels, supplier performance, and maintenance actions—are proprietary and tightly controlled. Because of this, any realistic end‑to‑end maintenance analytics project must blend real public data with carefully designed synthetic layers.
+The FAA SDR dataset is a real operational dataset, but it was never designed for analytics. Each SDR entry is a free‑form narrative written by a technician or flight crew member, and the structure varies widely across operators, aircraft, and time periods. Fields such as discrepancy text, part names, and failure descriptions contain inconsistent terminology, abbreviations, and formatting. Even structured fields like JASC codes, ATA chapters, and part identifiers often appear with missing values, typos, or operator‑specific conventions.
 
-The goal of this project is not to recreate a perfect copy of an airline’s internal database. Instead, the goal is to replicate the structure, relationships, and decision‑making logic that real maintenance, reliability, and supply‑chain analysts work with every day. The synthetic components in this project are built using the same assumptions, constraints, and operational patterns used in commercial M&E systems such as TRAX, AMOS, and Maintenix. That means the learning comes from understanding how the system works—not from the raw data itself.
+To perform meaningful reliability analysis, the data had to be normalized so that similar events could be compared consistently. This included:
+- Standardizing ATA and JASC codes to ensure subsystem‑level grouping was accurate.
+- Cleaning and harmonizing part numbers and part names to remove placeholders, blanks, and operator‑specific formatting.
+- Normalizing discrepancy text through NLP‑assisted keyword extraction to classify failure modes and symptoms.
+- Converting boolean flags and categorical fields into consistent, analysis‑ready formats.
 
-Working with a realistic synthetic dataset still teaches the core skills that matter in real aviation analytics roles:
+Without normalization, patterns such as “loss of pressure,” “pack trip,” or “smoke/odor events” would be fragmented across dozens of inconsistent text variations. Normalization allowed the dataset to behave like a coherent maintenance record system, enabling subsystem‑level insights, severity modeling, and failure‑mode clustering that mirror real airline reliability workflows.
 
-- Data modeling: Designing tables that mirror how airlines structure parts catalogs, work orders, ATA/JASC classifications, and inventory systems.
-- Normalization and cleaning: Reconciling inconsistent part numbers, merging SDR events with catalog data, and handling missing or ambiguous fields.
-- Operational logic: Mapping failures to maintenance actions, estimating repair durations, modeling AOG risk, and simulating supply‑chain delays.
-- Reliability and supply‑chain thinking: Understanding how failures drive stocking rules, lead times, criticality levels, and vendor performance.
-- End‑to‑end system design: Building a pipeline that connects failures → parts → inventory → work orders → analytics, just like a real airline.
+### Data Sources
+The analysis in this project is built entirely on the FAA’s Service Difficulty Reports (SDRs), which are one of the few publicly available datasets that capture real operational maintenance issues from U.S. commercial aircraft. SDRs are submitted by airlines, repair stations, and operators whenever a component, system, or structure experiences a failure, malfunction, or abnormal condition that could affect safety or airworthiness. Each report includes structured fields—such as ATA chapter, JASC code, aircraft type, and severity—as well as unstructured discrepancy text written by technicians or flight crews.
 
-In other words, while some fields are synthesized, the relationships, constraints, and workflows are modeled after real-world aviation operations. This allows the project to demonstrate practical, industry‑aligned skills: designing maintainable data systems, interpreting operational data, and building analytics that support maintenance planning, reliability engineering, and supply‑chain decision‑making.
+SDRs were selected as the sole data source for three reasons. First, they provide genuine, real‑world failure events from Part 121 operations, making them far more realistic than synthetic or simulated maintenance data. Second, they contain both structured and narrative fields, which allows for a blend of SQL‑based analysis and NLP‑assisted failure‑mode extraction. This combination mirrors the way airline reliability teams work: structured data for trend analysis, and narrative text for understanding how failures actually manifested. Third, SDRs are publicly accessible, making them one of the only datasets that allow a realistic deep dive into aircraft reliability without relying on proprietary airline systems such as work orders, shop findings, or parts tracking databases.
 
-### Assumptions and Synthetic Logic
-This project uses FAA Service Difficulty Reports (SDRs) as the authoritative source for real maintenance events, failure modes, JASC codes, and component descriptions. Because SDRs only capture failures and discrepancies—not the full aircraft bill of materials—the supply‑chain layer (unit cost, lead time, supplier assignment, stocking levels) is intentionally synthetic. All synthetic values are grounded in real aviation patterns: JASC/ATA chapter drives criticality and lead‑time behavior, part names and conditions influence cost heuristics, and failure frequency from SDRs determines stocking logic. The goal is not to recreate Boeing’s proprietary ERP, but to build a realistic, explainable model that mirrors how reliability and supply‑chain analysts reason about parts when full ERP data is unavailable.
-
-### How the System Works
-The pipeline ingests the SDR composite file, normalizes Part* and Component* fields, and merges them into a unified “parts universe” representing all components that appeared in real maintenance events. From there, the system generates a parts master table with synthetic but aviation‑grounded attributes (cost, lead time, criticality, supplier). A supplier table is created with performance metrics, and an inventory table is derived by combining failure frequency, criticality, cost, and lead‑time heuristics. These tables form a miniature but coherent maintenance‑and‑supply‑chain ecosystem that can be loaded into SQL for analysis and visualized in Tableau for reliability and logistics insights.
-
-### Work Order Assumptions
-#### 1. SDRs provide the failure event, not the maintenance action
-SDRs tell you what failed and how it was discovered, but not how long the repair took, whether the aircraft was AOG, or what specific maintenance actions were performed. The synthetic work‑order layer fills this gap using realistic airline logic.
-
-#### 2. Maintenance actions follow real ATA/JASC patterns
-Certain ATA chapters strongly correlate with specific maintenance environments and actions. For example, ATA 25 (cabin) is usually line maintenance, while ATA 53/54 (structure) is base maintenance and involves longer repair durations.
-
-#### 3. Fault codes and action codes are inferred from SDR text
-PartCondition, ComponentCondition, and the discrepancy narrative are used to infer the likely fault and the corresponding maintenance action. This mirrors how real maintenance systems classify work.
-
-#### 4. Backorder delays and AOG events are probabilistic
-Since SDRs do not include supply‑chain data, delays and AOG flags are generated using realistic heuristics based on criticality, lead time, and inventory levels.
-
-#### 5. One work order per SDR event
-Airlines typically generate one work order per discrepancy or maintenance event. The synthetic system mirrors this by collapsing multiple SDR rows into a single WO per SDR ID.
-
-### AI‑Generated Components
-The synthetic supply‑chain attributes and the logic that produces them were developed with the assistance of an AI system. The AI did not invent real proprietary data; instead, it generated structured, explainable heuristics based on aviation maintenance conventions, ATA/JASC patterns, and reliability engineering principles. All synthetic elements are clearly separated from the real SDR data, and the methodology is fully documented so that assumptions can be inspected, challenged, or extended. This approach allows the project to remain realistic, transparent, and professionally defensible while still enabling end‑to‑end analytics across maintenance, reliability, and supply‑chain domains.
+While SDRs are not a complete maintenance history—and often lack part numbers, corrective actions, or detailed troubleshooting—they are the industry’s standard public dataset for identifying high‑severity systems, clustering failure modes, and understanding operationally disruptive events. Their limitations are part of what makes them valuable: they force the analyst to normalize inconsistent fields, extract meaning from narrative text, and build a coherent reliability picture from imperfect but authentic operational data.
 
 ---
 
@@ -159,23 +140,41 @@ The synthetic supply‑chain attributes and the logic that produces them were de
 ![img2](/assets/explore_pics/failure%20mode%20by%20ata.png)
 ![img3](/assets/explore_pics/grounding%20atas%20over%20time.png)
 
-### 1. INSIGHT
-ONE SENTENCE OVERVIEW
-- SUPPORTING STATEMENT 1
-- SUPPORTING STATEMENT 2
-
-### 2. INSIGHT
-ONE SENTENCE OVERVIEW
-- SUPPORTING STATEMENT 1
-- SUPPORTING STATEMENT 2
 
 ---
 
 ## RECOMMENDED ACTIONS
-### 1. RECOMMENDATION
-- DETAIL 1
-- DETAIL 2
+### 1. Improve troubleshooting guidance for odor/smoke events
+Because CND dominates odor/smoke/burning smell, maintenance is not isolating root causes.
+- Update troubleshooting steps for odor/smoke events.
+- Require inspection of recirc fans, filters, and pack bays.
+- Add guidance for bleed air contamination checks.
+- Review wiring and connectors for fan motors.
 
-### 2. RECOMMENDATION
-- DETAIL 1
-- DETAIL 2
+### 2. Review outflow valve and pressure regulator maintenance intervals
+Valve failures produce the strongest, cleanest pattern: loss of pressure.
+- Review lubrication/functional check intervals.
+- Check SB applicability for outflow valves.
+- Review shop findings for valve actuators.
+- Look for tail‑number clustering (wiring harness issues).
+
+### 3. Investigate pack controller and ACM reliability
+Pack failures produce: odor, overheat, smoke, pressure issues, temperature failures
+Actions:
+- Review pack controller fault history.
+- Check ACM shop findings for oil contamination.
+- Evaluate pack bay cooling airflow.
+
+### 4. Address recirculation fan and filter reliability
+Fan and filter failures produce: burning smell, odor, smoke
+- Review recirc fan motor reliability.
+- Inspect for electrical arcing or bearing wear.
+- Review filter replacement intervals.
+- Check for contamination sources upstream.
+
+### 5. Reduce CND rates through structured troubleshooting
+(CND is the biggest problem in the dataset)
+- Add mandatory steps for ATA 21 severe events.
+- Require documentation of pack controller resets, valve checks, sensor readings.
+- Improve discrepancy writeup quality through flight crew training.
+- Add a “CND review” step in reliability meetings.
