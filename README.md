@@ -41,15 +41,15 @@ Data Analytics | Aerospace | Community Impact
 ---
 
 ## EXECUTIVE SUMMARY
-**American Airlines** operates a fleet of Boeing 737‑800 aircraft and faces the same maintenance, reliability, and supply‑chain pressures seen across the commercial aviation industry. This project simulates those real‑world challenges by transforming FAA Service Difficulty Reports (SDRs) into a structured, analytics‑ready dataset that models unscheduled maintenance events, component failures, and operational disruptions.
+**American Airlines** operates a fleet of Boeing 737‑800 aircraft and faces maintenance and reliability pressures that impact operational efficencies in grounded flights, diversions, and more. This repo anlyzes the systems on this airframe that are the primary drivers for high severity safety reports and unexpected maintenance procedures, and provides remedies to American Airlines to increase operational efficiency.
 
-Using SDRs as a proxy for real maintenance activity, the project builds an end‑to‑end pipeline that extracts, cleans, normalizes, and analyzes aircraft reliability data through ATA/JASC taxonomies, operator designators, and component‑level event patterns. The goal is to demonstrate how a modern airline could leverage data engineering and reliability analytics to improve fleet performance, reduce delays, and optimize parts availability.
+Using the FAA's Service Difficulty Reporting System (SDRS) as a proxy for American Airlines' (AA) real maintenance activity, this project builds an end‑to‑end pipeline that extracts, cleans, normalizes, and analyzes aircraft reliability data through ATA/JASC taxonomies, operator designators, and component‑level event patterns. The goal is to demonstrate how modern airlines can leverage data engineering and reliability analytics to improve fleet performance, reduce delays, and anticipate component failures.
 
 ### Problem Statement
 **What maintenance actions can American Airlines implement in their 737‑800 fleet to target systems and failure modes that drive high operational disruption by reducing the operational impact of severe maintenance events through ATA and JASC taxonomy?**
 
 ### Objectives
-To design a realistic, end‑to‑end reliability analytics workflow that transforms raw FAA SDR data into actionable insights for maintenance planning, component risk assessment, and supply‑chain decision‑making.
+To design a realistic, end‑to‑end reliability analytics workflow that transforms raw FAA SDR (Service Discrepancy Report) data into actionable insights for maintenance planning andcomponent risk assessment.
 
 ### Dashboards
 - Component‑level failure frequency
@@ -60,17 +60,17 @@ To design a realistic, end‑to‑end reliability analytics workflow that transf
 
 ### Key Findings
 **(To be completed as analysis progresses)**
-- Components with disproportionately high SDR rates
-- ATA chapters driving the majority of unscheduled events
-- Seasonal or operational patterns in failure occurrence
-- Gaps in parts availability contributing to extended AOG time
+- The AC/Pressurization (-21) system is the biggest driver for Aircraft on Ground (AOG), diversions, and in Flight Emergency (IFE) events, closely followed by Landing Gear (-32).
+- Failure modes for AC primarily centered around
+- 47% of level 3 severity events were due to the AC Distribution System (JASC 2120)
+- Failures trended around the ___ season
 
-<div style="font-size: 0.85em">
-**Resources**
+### Recommendations
+1. **Request Engineering review for 2120** 
 
-- Click here to access the Dashboards and Project Data.
+For further details, please see [Recommended Actions](#recommended-actions).
 
-</div>
+**Click here to access the Dashboards and Project Data**
 
 ---
 
