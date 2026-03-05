@@ -59,7 +59,6 @@ To design a realistic, end‑to‑end reliability analytics workflow that transf
 - High‑risk components and emerging failure modes
 
 ### Key Findings
-**(To be completed as analysis progresses)**
 - Most sev 3 discrepancies were CND'd and the component that caused the failure could not be identified
 - Door failures comprise of the most component-specific failures, accounting for ___ failures in the last 3 years, __% of severity level 3 failures.
 - The AC/Pressurization (-21) system is the biggest driver for Aircraft on Ground (AOG), diversions, and in Flight Emergency (IFE) events, closely followed by Landing Gear (-32).
@@ -143,7 +142,10 @@ While SDRs are not a complete maintenance history—and often lack part numbers,
 ![img2](/assets/explore_pics/failure%20mode%20by%20ata.png)
 ![img3](/assets/explore_pics/grounding%20atas%20over%20time.png)
 
-### overview
+### Overview
+Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Pressurization (ATA 21), Doors (ATA 52/25), and Fuel Indication (ATA 28). Door failures are overwhelmingly rigging‑driven, AC failures are dominated by odor/pressure anomalies with high CND rates, and fuel indication failures are driven by aging probes/compensators.
+
+### General Findings
 - Most sev 3 discrepancies were CND'd and the component that caused the failure could not be identified
 - Door failures comprise of the most component-specific failures, accounting for ___ failures in the last 3 years, __% of severity level 3 failures.
 - Nearly half of all severity‑3 events were CND (Could Not Duplicate), indicating widespread intermittent faults, ambiguous indications, and systemic troubleshooting gaps across multiple ATA chapters.
@@ -152,8 +154,11 @@ While SDRs are not a complete maintenance history—and often lack part numbers,
 - Indication systems (switches, sensors, probes) are a systemic weakness, appearing in the top 10 most common failed part types. These components frequently produce intermittent or false indications, contributing heavily to CND totals.
 - Fuel quantity and fuel system components (ATA 28) show high failure concentrations, especially compensators, probes, and pumps — a classic signature of aging fuel indication systems.
 - Landing Gear (ATA 32) is a major contributor to severe events, dominated by brake, wheel, tire, and strut failures. These failures are mechanically clean and rarely CND, indicating true component wear rather than troubleshooting ambiguity.
+- Repeat write‑ups are common for door and AC systems, indicating incomplete troubleshooting, rigging drift, or component wear not fully addressed during initial maintenance actions.
+- Windows (ATA 56) appear unexpectedly high in the top‑10 part types, driven by crazing, delamination, and seal failures — a known reliability issue on aging narrow‑body fleets.
+- Valves are the most cross‑ATA failure mode, appearing in ATA 21, 27, 28, 32, and 36. This indicates that valve reliability is a fleet‑wide concern, not isolated to a single system.
 
-### ac
+### AC System
 - The AC/Pressurization (-21) system is the biggest driver for Aircraft on Ground (AOG), diversions, and in Flight Emergency (IFE) events, closely followed by Landing Gear (-32).
 - For every system writeup, AC (-21) has the highest concentration of high severity and grounding events.
 - Failure modes for AC primarily centered around fault and fire.
@@ -161,16 +166,13 @@ While SDRs are not a complete maintenance history—and often lack part numbers,
 - Failures for the AC system trended around the summer season
 - Odor-related events in flight (burning smell, wet dog, etc.) contributed to the most AC grounding writeups
 - Failures overwhelming could not be duplicated by maintenance, primarily for odor discrepancies, though the most
-
-### door
-- Door‑related failures (ATA 52 + ATA 25 slide/girt‑bar interactions) are the single largest component‑specific reliability issue, accounting for 182 severity‑3 events over three years — approximately X% of all severe events (you can compute the exact % once you know the total count). These failures include guide arms, radius links, rollers, gust locks, seals, and rigging drift.
 - 47% of severity‑3 AC events originate from the Air Distribution System (JASC 2120), confirming subsystem‑level concentration within ATA 21.
 - Odor/smoke/burning‑smell events are the most common in‑flight AC symptoms, often leading to diversions or emergency declarations. These events frequently result in CND outcomes, suggesting intermittent bleed contamination or pack‑bay environmental issues.
-- Door failures show strong flight‑phase patterns — handle migration during climb or descent, seal leaks in cruise, and indication lights during takeoff roll — indicating pressurization‑load sensitivity and rigging drift.
-- Repeat write‑ups are common for door and AC systems, indicating incomplete troubleshooting, rigging drift, or component wear not fully addressed during initial maintenance actions.
 - Seasonal trends appear in AC/pack/duct failures, with higher event counts during summer months, consistent with thermal load and pack‑capacity stress.
-- Windows (ATA 56) appear unexpectedly high in the top‑10 part types, driven by crazing, delamination, and seal failures — a known reliability issue on aging narrow‑body fleets.
-- Valves are the most cross‑ATA failure mode, appearing in ATA 21, 27, 28, 32, and 36. This indicates that valve reliability is a fleet‑wide concern, not isolated to a single system.
+
+### Door System
+- Door‑related failures (ATA 52 + ATA 25 slide/girt‑bar interactions) are the single largest component‑specific reliability issue, accounting for 182 severity‑3 events over three years — approximately X% of all severe events (you can compute the exact % once you know the total count). These failures include guide arms, radius links, rollers, gust locks, seals, and rigging drift.
+- Door failures show strong flight‑phase patterns — handle migration during climb or descent, seal leaks in cruise, and indication lights during takeoff roll — indicating pressurization‑load sensitivity and rigging drift.
 - Door failures are a rigging‑dominated failure landscape: Guide arms, handles, latches, locks, rollers, and control rods all point to: rigging drift, linkage wear, tolerance stack‑up, misadjusted stop pins, repeat write‑ups. This is the #1 reliability theme for doors.
 - Door Slide/girt bar issues are a separate operational problem. These failures are often: crew‑induced, caused by catering, due to improper stowage, related to worn clips or brackets. This is a training + hardware issue.
 - Door Structural failures (hinge, sill drain, torque tube) are present but not dominant... These are: predictable, mechanical, not intermittent, often caught during heavy checks. They are not the main driver of groundings.
