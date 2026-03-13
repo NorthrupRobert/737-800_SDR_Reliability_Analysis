@@ -69,6 +69,8 @@ To design a realistic, end‑to‑end reliability analytics workflow that transf
 - Odor-related events in flight (burning smell, wet dog, etc.) contributed to the most AC grounding writeups
 - Failures overwhelming could not be duplicated by maintenance, primarily for odor discrepancies, though the most
 
+For further details, please see [Insights Deep Dive](#insights-deep-dive).
+
 ### Recommendations
 1. **Request Engineering review for 2120** 
 2. Review A, B, C checks for filters and other common grounding writeups... replace filters outright?
@@ -145,100 +147,118 @@ While SDRs are not a complete maintenance history—and often lack part numbers,
 ### Overview
 Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Pressurization (ATA 21), Doors (ATA 52/25), and Fuel Indication (ATA 28). Door failures are overwhelmingly rigging‑driven, AC failures are dominated by odor/pressure anomalies with high CND rates, and fuel indication failures are driven by aging probes/compensators.
 
+**For a technical, in-depth analysis of fleet discoveries and methodology, please review the [exploratory notebook](./_data_design_and_exploration/06_explore_aa.ipynb).**
+
 ### General Findings
-- Most sev 3 discrepancies were CND'd and the component that caused the failure could not be identified
-- Door failures comprise of the most component-specific failures, accounting for ___ failures in the last 3 years, __% of severity level 3 failures.
-- Nearly half of all severity‑3 events were CND (Could Not Duplicate), indicating widespread intermittent faults, ambiguous indications, and systemic troubleshooting gaps across multiple ATA chapters.
-- The AC/Pressurization system (ATA 21) is the largest driver of AOGs, diversions, and in‑flight emergency declarations, with high concentrations of pack, valve, duct, fan, and filter failures. ATA 21 also shows the highest CND rate of any system.
-- Engine‑related systems (ATA 72/73/75) are the second‑largest contributor to severe events, driven by bleed‑air interactions, oil contamination, temperature/pressure anomalies, and sensor/valve faults.
-- Indication systems (switches, sensors, probes) are a systemic weakness, appearing in the top 10 most common failed part types. These components frequently produce intermittent or false indications, contributing heavily to CND totals.
-- Fuel quantity and fuel system components (ATA 28) show high failure concentrations, especially compensators, probes, and pumps — a classic signature of aging fuel indication systems.
-- Landing Gear (ATA 32) is a major contributor to severe events, dominated by brake, wheel, tire, and strut failures. These failures are mechanically clean and rarely CND, indicating true component wear rather than troubleshooting ambiguity.
-- Repeat write‑ups are common for door and AC systems, indicating incomplete troubleshooting, rigging drift, or component wear not fully addressed during initial maintenance actions.
-- Windows (ATA 56) appear unexpectedly high in the top‑10 part types, driven by crazing, delamination, and seal failures — a known reliability issue on aging narrow‑body fleets.
-- Valves are the most cross‑ATA failure mode, appearing in ATA 21, 27, 28, 32, and 36. This indicates that valve reliability is a fleet‑wide concern, not isolated to a single system.
+#### 1. Intermittent faults and CND outcomes dominate severe events
+  - Nearly half of all severity‑3 events were Could Not Duplicate, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
+  - Indication systems (switches, sensors, probes) frequently produce false or intermittent signals and appear in the top 10 failed part types.
+  - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
+#### 2. Component‑specific failures cluster heavily in Doors and AC systems
+  - Door failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet.
+  - AC/Pressurization (ATA 21) is the largest system‑level driver of AOGs, diversions, and in‑flight emergencies.
+  - Both systems show high rates of repeat write‑ups, indicating incomplete troubleshooting or unresolved underlying mechanical issues.
+#### 3. Aging systems show predictable mechanical wear patterns
+  - Fuel Indication (ATA 28) failures cluster around compensators, probes, and pumps — classic aging‑fleet components.
+  - Landing Gear (ATA 32) failures are mechanically clean and rarely CND, dominated by brakes, wheels, tires, and struts.
+  - Windows (ATA 56) appear unexpectedly high due to crazing, delamination, and seal failures — another aging‑fleet signature.
+#### 4. Engine‑related systems are the second‑largest contributor to severe events
+  - ATA 72/73/75 failures are driven by bleed‑air interactions, oil contamination, temperature/pressure anomalies, and sensor/valve faults.
+  - These failures often cascade into ATA 21 symptoms (odor, smoke, pack trips), reinforcing cross‑system coupling.
 
-### AC System
-- The AC/Pressurization (-21) system is the biggest driver for Aircraft on Ground (AOG), diversions, and in Flight Emergency (IFE) events, closely followed by Landing Gear (-32).
-- For every system writeup, AC (-21) has the highest concentration of high severity and grounding events.
-- Failure modes for AC primarily centered around fault and fire.
-- 47% of level 3 severity events were due to the AC Distribution System (JASC 2120)
-- Failures for the AC system trended around the summer season
-- Odor-related events in flight (burning smell, wet dog, etc.) contributed to the most AC grounding writeups
-- Failures overwhelming could not be duplicated by maintenance, primarily for odor discrepancies, though the most
-- 47% of severity‑3 AC events originate from the Air Distribution System (JASC 2120), confirming subsystem‑level concentration within ATA 21.
-- Odor/smoke/burning‑smell events are the most common in‑flight AC symptoms, often leading to diversions or emergency declarations. These events frequently result in CND outcomes, suggesting intermittent bleed contamination or pack‑bay environmental issues.
-- Seasonal trends appear in AC/pack/duct failures, with higher event counts during summer months, consistent with thermal load and pack‑capacity stress.
+---
 
-### Door System
-- Door‑related failures (ATA 52 + ATA 25 slide/girt‑bar interactions) are the single largest component‑specific reliability issue, accounting for 182 severity‑3 events over three years — approximately X% of all severe events (you can compute the exact % once you know the total count). These failures include guide arms, radius links, rollers, gust locks, seals, and rigging drift.
-- Door failures show strong flight‑phase patterns — handle migration during climb or descent, seal leaks in cruise, and indication lights during takeoff roll — indicating pressurization‑load sensitivity and rigging drift.
-- Door failures are a rigging‑dominated failure landscape: Guide arms, handles, latches, locks, rollers, and control rods all point to: rigging drift, linkage wear, tolerance stack‑up, misadjusted stop pins, repeat write‑ups. This is the #1 reliability theme for doors.
-- Door Slide/girt bar issues are a separate operational problem. These failures are often: crew‑induced, caused by catering, due to improper stowage, related to worn clips or brackets. This is a training + hardware issue.
-- Door Structural failures (hinge, sill drain, torque tube) are present but not dominant... These are: predictable, mechanical, not intermittent, often caught during heavy checks. They are not the main driver of groundings.
-- AA's fleet has a systemic door rigging drift problem that is a combination of: guide arm (47) handle (46) latch (11) lock (11) roller (7) hinge (9) …is a textbook signature of rigging drift across the fleet.
-- Door Slide/girt bar failures are the second major reliability cluster These are high‑impact because they: cause AOG, require slide replacement involve safety equipment, often trigger emergency declarations
-- Door Drain/sill issues are a hidden driver of odor‑related diversions. Your logs show multiple diversions due to: rotten egg smell, foul odor, fluid leaks, All traced to sill drains.
+### AC System — Highest Severity System
+#### 1. ATA 21 is the fleet’s most operationally disruptive system
+- It is the top driver of AOGs, diversions, and in‑flight emergencies.
+- Nearly all AC events are severity‑3, with very few lower‑severity discrepancies.
+- 47% of severity‑3 AC events originate from JASC 2120 (Air Distribution System), showing a clear subsystem hotspot.
+#### 2. Odor/smoke events dominate AC write‑ups and drive high CND rates
+- Burning‑smell, smoke, and odor events are the most common in‑flight symptoms and frequently lead to diversions or emergency declarations.
+- ATA 21 has the highest CND rate of any system, especially for odor‑related discrepancies.
+- These patterns suggest intermittent bleed contamination, pack‑bay environmental issues, or duct leakage.
+#### 3. AC failures show strong environmental and seasonal patterns
+- Pack, duct, and distribution failures spike in summer months due to thermal load and pack‑capacity stress.
+- Failure modes cluster around fault, fire, and environmental contamination indications.
 
+---
+
+### Door System — Highest Component‑Specific Failure Area
+#### 1. Door failures are dominated by rigging drift and linkage wear
+- Failures involving guide arms, handles, latches, locks, rollers, and control rods all point to rigging drift, tolerance stack‑up, and misadjusted stop pins.
+- This is the #1 reliability theme for doors and the primary driver of repeat write‑ups.
+- The distribution of failed components (guide arm, handle, latch, lock, roller, hinge) is a textbook signature of systemic rigging drift.
+#### 2. Door‑related failures form the largest component‑specific severity‑3 cluster
+- ATA 52 + ATA 25 slide/girt‑bar failures account for 182 severity‑3 events over three years — the largest component‑specific cluster in the fleet.
+- These failures include guide arms, radius links, rollers, gust locks, seals, and rigging drift.
+#### 3. Door failures show strong operational and flight‑phase sensitivity
+- Handle migration during climb/descent, seal leaks in cruise, and takeoff‑roll indication lights all indicate pressurization‑load sensitivity.
+- Slide/girt bar failures form a second major cluster, often caused by crew handling, catering interference, improper stowage, or worn clips/brackets.
+- Structural failures (hinge, sill drain, torque tube) occur but are predictable and not major drivers of groundings.
 
 ---
 
 ## RECOMMENDED ACTIONS
-### 1. Improve troubleshooting guidance for odor/smoke events
+### 1. Strengthen Troubleshooting and Reduce CND Rates
+#### a. Improve troubleshooting guidance for odor/smoke events
 Because CND dominates odor/smoke/burning smell, maintenance is not isolating root causes.
 - Update troubleshooting steps for odor/smoke events.
 - Require inspection of recirc fans, filters, and pack bays.
 - Add guidance for bleed air contamination checks.
 - Review wiring and connectors for fan motors.
-
-### 2. Review outflow valve and pressure regulator maintenance intervals
-Valve failures produce the strongest, cleanest pattern: loss of pressure.
-- Review lubrication/functional check intervals.
-- Check SB applicability for outflow valves.
-- Review shop findings for valve actuators.
-- Look for tail‑number clustering (wiring harness issues).
-
-### 3. Investigate pack controller and ACM reliability
-Pack failures produce: odor, overheat, smoke, pressure issues, temperature failures
-Actions:
-- Review pack controller fault history.
-- Check ACM shop findings for oil contamination.
-- Evaluate pack bay cooling airflow.
-
-### 4. Address recirculation fan and filter reliability
-Fan and filter failures produce: burning smell, odor, smoke
-- Review recirc fan motor reliability.
-- Inspect for electrical arcing or bearing wear.
-- Review filter replacement intervals.
-- Check for contamination sources upstream.
-
-### 5. Reduce CND rates through structured troubleshooting
+#### b. Reduce CND rates through structured troubleshooting
 (CND is the biggest problem in the dataset)
 - Add mandatory steps for ATA 21 severe events.
 - Require documentation of pack controller resets, valve checks, sensor readings.
 - Improve discrepancy writeup quality through flight crew training.
 - Add a “CND review” step in reliability meetings.
 
-### 1. Implement a fleet‑wide door rigging audit
+---
+
+### 2. Address Specific Parts reliability
+#### a. Investigate pack controller and ACM reliability
+Pack failures produce: odor, overheat, smoke, pressure issues, temperature failures
+Actions:
+- Review pack controller fault history.
+- Check ACM shop findings for oil contamination.
+- Evaluate pack bay cooling airflow.
+#### b. Address recirculation fan and filter reliability
+Fan and filter failures produce: burning smell, odor, smoke
+- Review recirc fan motor reliability.
+- Inspect for electrical arcing or bearing wear.
+- Review filter replacement intervals.
+- Check for contamination sources upstream.
+
+---
+
+### 3. Address Door rigging issues
+#### a. Implement a fleet‑wide door rigging audit
 Focus on: guide arm tolerances, handle linkage slack, stop pin adjustment, roller/hinge wear, latch/lock engagement
 This will reduce the top 4 categories simultaneously.
-
-### 2. Introduce a slide/girt bar inspection and training program
+#### b. Introduce a slide/girt bar inspection and training program
 This will reduce slide assembly + girt bar failures.
 - inspect girt bar clips for wear
 - reinforce proper stowage procedures
 - review catering interference points
 - add lubrication/cleaning steps
-
-### 3. Add sill drain cleaning to line checks
+#### c. Add sill drain cleaning to line checks
 This directly prevents:
 - odor events
 - diversions
 - corrosion
 - repeat write‑ups
 
-### 4. Add door sensor calibration to rigging tasks
-The logs show many indication faults that are not counted here.
+---
 
-### 5. Track repeat write‑ups by tail number
+### 4. Track Additional Maintenance Procedures moving forward
+#### a. Review outflow valve and pressure regulator maintenance intervals
+Valve failures produce the strongest, cleanest pattern: loss of pressure.
+- Review lubrication/functional check intervals.
+- Check SB applicability for outflow valves.
+- Review shop findings for valve actuators.
+- Look for tail‑number clustering (wiring harness issues).
+#### b. Track repeat write‑ups by tail number
 Guide arm/handle failures often repeat on the same aircraft.
+#### c. Evaluate aging‑fleet components (ATA 28, ATA 56)
+- Review probe/compensator replacement intervals
+- Add window seal/crazing inspections to heavy checks

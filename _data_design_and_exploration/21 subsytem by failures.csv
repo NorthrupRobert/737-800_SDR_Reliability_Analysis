@@ -1,0 +1,8 @@
+"jasc","sev_3_freq","sev_2_freq","sev_1_freq","sev_0_freq","jasc_code","ata_chapter","description"
+"2100","6","1","0","0","2100",21,"AIR CONDITIONING SYSTEM"
+"2120","139","15","0","0","2120",21,"AIR DISTRIBUTION SYSTEM"
+"2130","40","0","0","0","2130",21,"CABIN PRESSURE CONTROL SYSTEM"
+"2140","1","0","0","0","2140",21,"HEATING SYSTEM"
+"2150","40","3","0","0","2150",21,"CABIN COOLING SYSTEM"
+"2160","14","0","0","0","2160",21,"CABIN TEMPERATURE CONTROL SYSTEM"
+"2170","1","0","0","0","2170",21,"HUMIDITY CONTROL SYSTEM"
