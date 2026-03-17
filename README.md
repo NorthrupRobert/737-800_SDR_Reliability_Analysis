@@ -52,11 +52,7 @@ Using the FAA's Service Difficulty Reporting System (SDRS) as a proxy for Americ
 To design a realistic, end‑to‑end reliability analytics workflow that transforms raw FAA SDR (Service Discrepancy Report) data into actionable insights for maintenance planning andcomponent risk assessment.
 
 ### Dashboards
-- Component‑level failure frequency
-- ATA/JASC chapter trends
-- Operator‑level event distributions
-- Time‑based reliability patterns
-- High‑risk components and emerging failure modes
+For further details, please see my [Tableau Dashboard](https://public.tableau.com/views/AmericanAirlines737-400SeverityAnalysis/Sheet5?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 
 ### Key Findings
 - Most sev 3 discrepancies were CND'd and the component that caused the failure could not be identified
@@ -77,8 +73,6 @@ For further details, please see [Insights Deep Dive](#insights-deep-dive).
 3. Impose internal limits on key valves during op chks to limit failures in these critical components for high severity events.
 
 For further details, please see [Recommended Actions](#recommended-actions).
-
-**Click here to access the Dashboards and Project Data**
 
 ---
 
@@ -151,13 +145,12 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 
 ### General Findings
 #### 1. Intermittent faults and CND outcomes dominate severe events
-  - Nearly half of all severity‑3 events were Could Not Duplicate, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
+  - 35% of all severity‑3 events were Could Not Duplicate for the AC System, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
   - Indication systems (switches, sensors, probes) frequently produce false or intermittent signals and appear in the top 10 failed part types.
   - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
 #### 2. Component‑specific failures cluster heavily in Doors and AC systems
   - Door failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet.
   - AC/Pressurization (ATA 21) is the largest system‑level driver of AOGs, diversions, and in‑flight emergencies.
-  - Both systems show high rates of repeat write‑ups, indicating incomplete troubleshooting or unresolved underlying mechanical issues.
 #### 3. Aging systems show predictable mechanical wear patterns
   - Fuel Indication (ATA 28) failures cluster around compensators, probes, and pumps — classic aging‑fleet components.
   - Landing Gear (ATA 32) failures are mechanically clean and rarely CND, dominated by brakes, wheels, tires, and struts.
@@ -188,10 +181,15 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 - Failures involving guide arms, handles, latches, locks, rollers, and control rods all point to rigging drift, tolerance stack‑up, and misadjusted stop pins.
 - This is the #1 reliability theme for doors and the primary driver of repeat write‑ups.
 - The distribution of failed components (guide arm, handle, latch, lock, roller, hinge) is a textbook signature of systemic rigging drift.
-#### 2. Door‑related failures form the largest component‑specific severity‑3 cluster
+#### 2. High number of “Not Yet Fixed” door discrepancies indicates systemic intermittent faults and repeat‑event monitoring
+- “Not Yet Fixed” appears as one of the highest‑count “components” in the heatmap.
+- These open jobs cluster around indication faults, sticking/binding, and “other failure mode” — all classic intermittent issues.
+- Maintainers appear to be intentionally leaving these discrepancies open to monitor for recurrence, a common practice when dealing with intermittent door rigging or sensor issues.
+- This suggests a fleet‑wide pattern of unresolved or recurring door issues that require multiple flight cycles to validate.
+#### 3. Door‑related failures form the largest component‑specific severity‑3 cluster
 - ATA 52 + ATA 25 slide/girt‑bar failures account for 182 severity‑3 events over three years — the largest component‑specific cluster in the fleet.
 - These failures include guide arms, radius links, rollers, gust locks, seals, and rigging drift.
-#### 3. Door failures show strong operational and flight‑phase sensitivity
+#### 4. Door failures show strong operational and flight‑phase sensitivity
 - Handle migration during climb/descent, seal leaks in cruise, and takeoff‑roll indication lights all indicate pressurization‑load sensitivity.
 - Slide/girt bar failures form a second major cluster, often caused by crew handling, catering interference, improper stowage, or worn clips/brackets.
 - Structural failures (hinge, sill drain, torque tube) occur but are predictable and not major drivers of groundings.
@@ -241,12 +239,9 @@ This will reduce slide assembly + girt bar failures.
 - reinforce proper stowage procedures
 - review catering interference points
 - add lubrication/cleaning steps
-#### c. Add sill drain cleaning to line checks
-This directly prevents:
-- odor events
-- diversions
-- corrosion
-- repeat write‑ups
+#### c. Establish clearer closure criteria for intermittent door discrepancies.  
+- High counts of “Not Yet Fixed” events indicate maintainers are leaving jobs open due to intermittent behavior.
+- Introduce structured follow‑up steps (post‑flight checks, sensor calibration, rigging verification) to reduce open‑job backlog and improve troubleshooting continuity.
 
 ---
 
