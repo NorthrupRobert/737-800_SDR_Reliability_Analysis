@@ -32,11 +32,20 @@ Data Analytics | Aerospace | Community Impact
 ---
 
 ## TABLE OF CONTENTS
-1. [Executive Summary](#executive-summary)
-2. [Background](#background)
-3. [Data Structure Overview](#data-structure-overview)
-4. [Insights Deep Dive](#insights-deep-dive)
-5. [Recommended Actions](#recommended-actions)
+1. [Audience and Context](#audience-and-context)
+2. [Executive Summary](#executive-summary)
+3. [Background](#background)
+4. [Data Structure Overview](#data-structure-overview)
+5. [Insights Deep Dive](#insights-deep-dive)
+6. [Recommended Actions](#recommended-actions)
+7. [Appendix](#appendix)
+
+---
+
+## AUDIENCE AND CONTEXT
+This analysis is intended for **reliability engineers** and **maintenance program managers** for **American Airlines**' Boeing 737-400 Fleet. Here, we delve into ATA and JASC system-level performance, reocurring major discrepancies, failure-mode clustering, and evaluating component-level reliability trends. Insights support recommendations to these stakeholders to make adjustments to routine maintenance checks, request engineering reviews of high-severity and high failure-rate systems, and more. This information serves as an investigation into how American Airlines can limit CND events, high safety severity events, aircraft grounding and drive data-driven decision making for keeping our aircraft in the air.
+
+For readers unfamiliar with technical terms utilized in this report, please see the [Appendix](#appendix).
 
 ---
 
@@ -46,7 +55,7 @@ Data Analytics | Aerospace | Community Impact
 Using the FAA's Service Difficulty Reporting System (SDRS) as a proxy for American Airlines' (AA) real maintenance activity, this project builds an end‑to‑end pipeline that extracts, cleans, normalizes, and analyzes aircraft reliability data through ATA/JASC taxonomies, operator designators, and component‑level event patterns. The goal is to demonstrate how modern airlines can leverage data engineering and reliability analytics to improve fleet performance, reduce delays, and anticipate component failures.
 
 ### Problem Statement
-**What maintenance actions can American Airlines implement in their 737‑800 fleet to target systems and failure modes that drive high operational disruption by reducing the operational impact of severe maintenance events through ATA and JASC taxonomy?**
+**What maintenance actions can American Airlines implement in their 737‑800 fleet to target systems and failure modes that drive high operational disruption by reducing the operational impact of severe maintenance events through ATA and JASC taxonomy, as well as Natural Language Processing?**
 
 ### Objectives
 To design a realistic, end‑to‑end reliability analytics workflow that transforms raw FAA SDR (Service Discrepancy Report) data into actionable insights for maintenance planning andcomponent risk assessment.
@@ -144,12 +153,15 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 **For a technical, in-depth analysis of fleet discoveries and methodology, please review the [exploratory notebook](./_data_design_and_exploration/06_explore_aa.ipynb).**
 
 ### General Findings
+*Period considered for analysis **is Nov 1st, 2022 - Dec 31st, 2025***
+
 #### 1. Intermittent faults and CND outcomes dominate severe events
-  - 35% of all severity‑3 events were Could Not Duplicate for the AC System, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
+  - 26.36% of all sev-3 events (442 events total) are CND for all systems.
+  - 37.07% of all severity‑3 events (86 events total) were CND (Could Not Duplicate) for the AC System, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
   - Indication systems (switches, sensors, probes) frequently produce false or intermittent signals and appear in the top 10 failed part types.
   - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
 #### 2. Component‑specific failures cluster heavily in Doors and AC systems
-  - Door failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet.
+  - Door (JASC 5210) failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet (137 sev-3 level events).
   - AC/Pressurization (ATA 21) is the largest system‑level driver of AOGs, diversions, and in‑flight emergencies.
 #### 3. Aging systems show predictable mechanical wear patterns
   - Fuel Indication (ATA 28) failures cluster around compensators, probes, and pumps — classic aging‑fleet components.
@@ -163,7 +175,7 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 
 ### AC System — Highest Severity System
 #### 1. ATA 21 is the fleet’s most operationally disruptive system
-- It is the top driver of AOGs, diversions, and in‑flight emergencies.
+- It is the top driver of AOGs, diversions, and in‑flight emergencies, accounting for 240 (__%) of sev 3 events, and 262 (__%) of sev 2 events
 - Nearly all AC events are severity‑3, with very few lower‑severity discrepancies.
 - 47% of severity‑3 AC events originate from JASC 2120 (Air Distribution System), showing a clear subsystem hotspot.
 #### 2. Odor/smoke events dominate AC write‑ups and drive high CND rates
@@ -257,3 +269,20 @@ Guide arm/handle failures often repeat on the same aircraft.
 #### c. Evaluate aging‑fleet components (ATA 28, ATA 56)
 - Review probe/compensator replacement intervals
 - Add window seal/crazing inspections to heavy checks
+
+
+---
+
+## APPENDIX
+- ATA Chapter
+- JASC
+- AOG
+- IFE
+- Severity Level, Safety (These categories were defined by me to categorize safety-failure related events and guage operational impact of each of these discrepancies in our fleet)
+  - **3**: Emergencies that resulted in aborted flights, AOG, IFE, diversions, leaks in safety-critical systems, etc. *(e.g. "EMERGENCY DECLARED", "ABORTED TAKEOFF", "IFE", "HYDRO LEAK")*
+  - **2**: Discrepancies resulting in failed, critical systems that could soon result in an emergency should they not be addressed. *(e.g. "BSU #1 INOP, FLIGHT NOT GROUNDED", "PACK FAILURE", "AUTOPILOT DISCONNECT")*
+  - **1**: Avionics, comms, electrical, and lighting issues that are not safety critical but impact operational ability *(e.g. "AUTO PILOT INOP", "EMER LIGHT OUT")*
+  - **0**: Non-safety related discrepancy *(e.g. "TRAY TABLE DIFFICULT TO UNFOLD", "GALLEY LIGHT INOP")*
+
+
+  
