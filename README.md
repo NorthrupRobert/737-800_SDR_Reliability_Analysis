@@ -160,6 +160,15 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
   - 37.07% of all severity‑3 events (86 events total) were CND (Could Not Duplicate) for the AC System, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
   - Indication systems (switches, sensors, probes) frequently produce false or intermittent signals and appear in the top 10 failed part types.
   - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
+
+| System | CND Events Over Period |
+| --- | --- |
+| 21 (AC/Pressurization) | 86 |
+| 28 (Fuel) | 56 |
+| 32 (Landing Gear) | 48 |
+| 52 (Doors) | 35 |
+| 72 (Engine) | 30 |
+
 #### 2. Component‑specific failures cluster heavily in Doors and AC systems
   - Door (JASC 5210) failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet (137 sev-3 level events).
   - AC/Pressurization (ATA 21) is the largest system‑level driver of AOGs, diversions, and in‑flight emergencies.
@@ -176,7 +185,7 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 ### AC System — Highest Severity System
 #### 1. ATA 21 is the fleet’s most operationally disruptive system
 - Air Conditioning (ATA -21) is the **top driver of AOGs, diversions, and in‑flight emergencies** accounting for 240 (12.82%) sev 3 events (vs the second most sev 3 events caused by Landing Gear at 10.50%), and 262 (12.50%) sev 2 events(vs the highest sev-2 driver Landing Gear with 50.66%).
-- AC discrepancies are highly critically, where nearly all AC events (_%) are severity‑3. Limiting failures of this system is mission critical to ensure the operational capacity of our fleet.
+- AC discrepancies are highly critically, where nearly all AC events (92.75%) are severity‑3. Limiting failures of this system is mission critical to ensure the operational capacity of our fleet.
 - 47% of severity‑3 AC events originate from JASC 2120 (Air Distribution System), showing a clear subsystem hotspot.
 #### 2. Odor/smoke events dominate AC write‑ups and drive high CND rates
 - Burning‑smell, smoke, and odor events are by far the most common in‑flight safety concern symptoms and frequently lead to diversions and emergency declarations.
