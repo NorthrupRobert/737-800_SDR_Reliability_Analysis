@@ -175,15 +175,13 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 
 ### AC System — Highest Severity System
 #### 1. ATA 21 is the fleet’s most operationally disruptive system
-- It is the top driver of AOGs, diversions, and in‑flight emergencies, accounting for 240 (__%) of sev 3 events, and 262 (__%) of sev 2 events
-- Nearly all AC events are severity‑3, with very few lower‑severity discrepancies.
+- Air Conditioning (ATA -21) is the **top driver of AOGs, diversions, and in‑flight emergencies** accounting for 240 (12.82%) sev 3 events (vs the second most sev 3 events caused by Landing Gear at 10.50%), and 262 (12.50%) sev 2 events(vs the highest sev-2 driver Landing Gear with 50.66%).
+- AC discrepancies are highly critically, where nearly all AC events (_%) are severity‑3. Limiting failures of this system is mission critical to ensure the operational capacity of our fleet.
 - 47% of severity‑3 AC events originate from JASC 2120 (Air Distribution System), showing a clear subsystem hotspot.
 #### 2. Odor/smoke events dominate AC write‑ups and drive high CND rates
-- Burning‑smell, smoke, and odor events are the most common in‑flight symptoms and frequently lead to diversions or emergency declarations.
+- Burning‑smell, smoke, and odor events are by far the most common in‑flight safety concern symptoms and frequently lead to diversions and emergency declarations.
 - ATA 21 has the highest CND rate of any system, especially for odor‑related discrepancies.
-- These patterns suggest intermittent bleed contamination, pack‑bay environmental issues, or duct leakage.
-#### 3. AC failures show strong environmental and seasonal patterns
-- Pack, duct, and distribution failures spike in summer months due to thermal load and pack‑capacity stress.
+- These patterns suggest intermittent bleed contamination, pack‑bay environmental issues, discrepancies in filter replacement, or duct leakage.
 - Failure modes cluster around fault, fire, and environmental contamination indications.
 
 ---
