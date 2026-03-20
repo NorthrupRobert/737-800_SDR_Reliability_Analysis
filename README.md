@@ -156,22 +156,24 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 *Period considered for analysis **is Nov 1st, 2022 - Dec 31st, 2025***
 
 #### 1. Intermittent faults and CND outcomes dominate severe events
-  - 26.36% of all sev-3 events (442 events total) are CND for all systems.
-  - 37.07% of all severity‑3 events (86 events total) were CND (Could Not Duplicate) for the AC System, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
-  - Indication systems (switches, sensors, probes) frequently produce false or intermittent signals and appear in the top 10 failed part types.
-  - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
+  *Table 1: CND Events by System*
+  | System | CND Events Over Period |
+  | --- | --- |
+  | 21 (AC/Pressurization) | 86 |
+  | 28 (Fuel) | 56 |
+  | 32 (Landing Gear) | 48 |
+  | 52 (Doors) | 35 |
+  | 72 (Engine) | 30 |
 
-| System | CND Events Over Period |
-| --- | --- |
-| 21 (AC/Pressurization) | 86 |
-| 28 (Fuel) | 56 |
-| 32 (Landing Gear) | 48 |
-| 52 (Doors) | 35 |
-| 72 (Engine) | 30 |
+  - **26.36%** of all sev-3 events (442 events total) are **CND for all systems**.
+  - **37.07%** of all severity‑3 events (86 events total) were **CND** (Could Not Duplicate) for the **AC System**, indicating intermittent faults, ambiguous indications, and systemic troubleshooting gaps.
+  - Switches, sensors, and probes collectively account for over 100 failures across ATA 21, 27, 28, 32, 34, and 52.
+  - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
+  - **CND is the #1 "failed part"** type in the fleet, appearing in 31 ATA chapters.
 
 #### 2. Component‑specific failures cluster heavily in Doors and AC systems
   - Door (JASC 5210) failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet (137 sev-3 level events).
-  - AC/Pressurization (ATA 21) is the largest system‑level driver of AOGs, diversions, and in‑flight emergencies.
+  - Air Conditioning (ATA -21) is the **top driver of AOGs, diversions, and in‑flight emergencies** accounting for 240 (12.82%) sev 3 events (vs the second most sev 3 events caused by Landing Gear at 10.50%), and 262 (12.50%) sev 2 events(vs the highest sev-2 driver Landing Gear with 50.66%).
 #### 3. Aging systems show predictable mechanical wear patterns
   - Fuel Indication (ATA 28) failures cluster around compensators, probes, and pumps — classic aging‑fleet components.
   - Landing Gear (ATA 32) failures are mechanically clean and rarely CND, dominated by brakes, wheels, tires, and struts.
@@ -184,10 +186,10 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 
 ### AC System — Highest Severity System
 #### 1. ATA 21 is the fleet’s most operationally disruptive system
-- Air Conditioning (ATA -21) is the **top driver of AOGs, diversions, and in‑flight emergencies** accounting for 240 (12.82%) sev 3 events (vs the second most sev 3 events caused by Landing Gear at 10.50%), and 262 (12.50%) sev 2 events(vs the highest sev-2 driver Landing Gear with 50.66%).
 - AC discrepancies are highly critically, where nearly all AC events (92.75%) are severity‑3. Limiting failures of this system is mission critical to ensure the operational capacity of our fleet.
 - 47% of severity‑3 AC events originate from JASC 2120 (Air Distribution System), showing a clear subsystem hotspot.
 #### 2. Odor/smoke events dominate AC write‑ups and drive high CND rates
+- ATA 21 has 2.8× more CND events than the next‑highest system (ATA 28).
 - Burning‑smell, smoke, and odor events are by far the most common in‑flight safety concern symptoms and frequently lead to diversions and emergency declarations.
 - ATA 21 has the highest CND rate of any system, especially for odor‑related discrepancies.
 - These patterns suggest intermittent bleed contamination, pack‑bay environmental issues, discrepancies in filter replacement, or duct leakage.
@@ -202,6 +204,8 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 - The distribution of failed components (guide arm, handle, latch, lock, roller, hinge) is a textbook signature of systemic rigging drift.
 #### 2. High number of “Not Yet Fixed” door discrepancies indicates systemic intermittent faults and repeat‑event monitoring
 - “Not Yet Fixed” appears as one of the highest‑count “components” in the heatmap.
+- Door‑related part types (door, hinge, latch, roller, control rod, lock) collectively account for over 130 failures across ATA 25 and 52.
+- ATA 52 alone has 103 “door” part failures, the single largest part‑type/ATA intersection in the dataset.
 - These open jobs cluster around indication faults, sticking/binding, and “other failure mode” — all classic intermittent issues.
 - Maintainers appear to be intentionally leaving these discrepancies open to monitor for recurrence, a common practice when dealing with intermittent door rigging or sensor issues.
 - This suggests a fleet‑wide pattern of unresolved or recurring door issues that require multiple flight cycles to validate.
@@ -212,6 +216,13 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 - Handle migration during climb/descent, seal leaks in cruise, and takeoff‑roll indication lights all indicate pressurization‑load sensitivity.
 - Slide/girt bar failures form a second major cluster, often caused by crew handling, catering interference, improper stowage, or worn clips/brackets.
 - Structural failures (hinge, sill drain, torque tube) occur but are predictable and not major drivers of groundings.
+#### 5. Aging systems show predictable mechanical wear patterns
+- Fuel Indication (ATA 28) failures cluster around compensators (43), probes (19), and pumps (15) — classic aging‑fleet components.
+- Landing Gear (ATA 32) failures are mechanically clean and rarely CND, dominated by brakes (24), wheels (13), tires (11), and struts (11).
+- Windows (ATA 56) appear unexpectedly high with 58 failures, driven by crazing, delamination, and seal degradation.
+#### 6. Engine‑related systems are the second‑largest contributor to severe events
+- ATA 72/73/75 collectively account for 86 failures, driven by bleed‑air interactions, oil contamination, temperature/pressure anomalies, and sensor/valve faults.
+- These failures often cascade into ATA 21 symptoms (odor, smoke, pack trips), reinforcing cross‑system coupling.
 
 ---
 
