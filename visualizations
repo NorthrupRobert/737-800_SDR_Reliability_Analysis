@@ -1,150 +1,58 @@
-1. Tail‑Number Repeat Offender Map (NEW)
+🔥 1. Repeat Write‑Up Analysis (Tail‑Number Clustering)
 
-Visualization type:
+This is the #1 thing reliability engineers look for.
 
-    Tree map
+Visualization:
 
-    Pareto chart
+    A bar chart or heatmap showing tail number × ATA or tail number × component
 
-    Ranked bar chart with color‑coded ATA
+    Highlighting aircraft with repeat failures
 
-Why it works:  
-Tail‑number clustering is inherently hierarchical.
-You can show:
+Why it matters:
 
-    which aircraft drive the most severe events
+    Shows chronic aircraft
 
-    which aircraft drive the most door rigging issues
+    Shows rigging drift
 
-    which aircraft drive the most AC odor events
+    Shows environmental bleed issues
 
-This instantly elevates your dashboard because it feels operational.
-2. Failure Sankey Diagram (NEW + High Impact)
+    Shows aging aircraft patterns
 
-Visualization type:
+This is the missing piece that would make your analysis feel real.
+🔥 2. MTBF‑Style Trend (Failure Rate Over Time)
 
-    Sankey flow: ATA → subsystem → component → failure mode
+Even if you don’t have flight hours, you can approximate:
 
-Why it works:  
-Your data is perfect for this because you have:
+    failures per month
 
-    ATA
+    failures per 100 SDRs
 
-    JASC
+    failures per ATA per month
 
-    failed_part
+Visualization:
 
-    failure_mode
+    Line graph: ATA 21 / ATA 52 / ATA 28 failure rate over time
 
-This shows the flow of failures through the system.
+Why it matters:
 
-It’s visually striking and tells a story in one glance.
-3. Flight‑Phase Failure Map (NEW)
+    Reliability teams think in rates, not raw counts
 
-Visualization type:
+    Shows whether the system is improving or degrading
 
-    Radial chart
+🔥 3. Failure Mode Pareto Chart
 
-    Sunburst
+You already have failure modes — now show them as a Pareto.
 
-    Circular bar plot
+Visualization:
 
-Why it works:  
-You already identified:
+    Bar chart sorted descending
 
-    takeoff → door lights
+    Cumulative % line
 
-    climb → handle migration
+Why it matters:
 
-    cruise → seal leaks
+    This is the single most common reliability visualization
 
-    descent → odor events
+    Shows the “vital few” failure modes
 
-This is a natural fit for a circular visualization.
-4. Seasonal Reliability Wheel (NEW)
-
-Visualization type:
-
-    Polar area chart
-
-    Circular heatmap
-
-Why it works:  
-You found:
-
-    AC failures spike in summer
-
-    odor events cluster in warm months
-
-    pressure anomalies correlate with temperature
-
-A circular seasonal chart is visually compelling and intuitive.
-5. Component Reliability Matrix (NEW)
-
-Visualization type:
-
-    Matrix heatmap
-
-    Dot plot
-
-Axes:
-
-    X = component (guide arm, handle, slide assembly, valve, probe, etc.)
-
-    Y = failure mode (odor, pressure loss, rigging drift, sticking, fire, etc.)
-
-This shows which components fail how — a reliability engineer’s dream.
-6. CND Diagnostic Funnel (NEW)
-
-Visualization type:
-
-    Funnel chart
-
-    Stacked bar with CND vs Confirmed
-
-Why it works:  
-You found:
-
-    nearly half of all severe events are CND
-
-    AC has the highest CND rate
-
-    odor events are overwhelmingly CND
-
-A funnel chart visually communicates “signal loss” in troubleshooting.
-7. Door Component Pareto (NEW)
-
-Visualization type:
-
-    Pareto chart (bar + cumulative line)
-
-Why it works:  
-Your door findings are perfect for a Pareto:
-
-    guide arm
-
-    handle
-
-    slide assembly
-
-    girt bar
-
-    latch
-
-    lock
-
-    hinge
-
-    roller
-
-This shows the “vital few” components that drive most door failures.
-8. ATA Severity Waterfall (NEW)
-
-Visualization type:
-
-    Waterfall chart
-
-Why it works:  
-You can show how each ATA contributes to total severity‑3 events.
-
-This is a great executive‑level visual.
+    Perfect for AC odor/smoke, door rigging, fuel indication
