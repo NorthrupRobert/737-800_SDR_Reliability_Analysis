@@ -56,3 +56,35 @@ Why it matters:
     Shows the “vital few” failure modes
 
     Perfect for AC odor/smoke, door rigging, fuel indication
+
+
+
+
+
+# Dashboard 1 — Fleet Overview
+- ATA frequency bar chart
+- ATA × severity heatmap
+- ATA trend line
+- Sev‑3 pie chart
+- CND scorecard
+- MTBF‑style failure rate line
+
+# Dashboard 2 — System Deep Dives
+- AC treemap
+- AC subsystem heatmap
+- AC failure mode Pareto
+- Door heatmap
+- Door failure mode Pareto
+- Fuel subsystem bar chart
+
+# Dashboard 3 — Tail‑Number Hotspots
+- Aircraft × ATA heatmap
+- Fleet average column
+- Top hotspot aircraft table
+- Tail‑specific drill‑downs
+
+#Dashboard 4 — Failure Mode & Component Analytics
+- Sev‑3 failed part bar chart
+- ATA → JASC treemap
+- Sankey (optional)
+- Additional Pareto charts
