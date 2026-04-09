@@ -83,7 +83,7 @@ Why it matters:
 - Top hotspot aircraft table
 - Tail‑specific drill‑downs
 
-#Dashboard 4 — Failure Mode & Component Analytics
+# Dashboard 4 — Failure Mode & Component Analytics
 - Sev‑3 failed part bar chart
 - ATA → JASC treemap
 - Sankey (optional)
