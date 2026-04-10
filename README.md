@@ -170,7 +170,6 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
   - Switches, sensors, and probes collectively account for over 100 failures across ATA 21, 27, 28, 32, 34, and 52.
   - Valve failures appear across ATA 21, 27, 28, 32, and 36, reinforcing a fleet‑wide pattern of intermittent or ambiguous indications.
   - **CND is the #1 "failed part"** type in the fleet, appearing in 31 ATA chapters.
-
 #### 2. Component‑specific failures cluster heavily in Doors and AC systems
   - Door (JASC 5210) failures are the largest component‑specific cluster, accounting for the highest number of severity‑3 events in the fleet (137 sev-3 level events).
   - Air Conditioning (ATA -21) is the **top driver of AOGs, diversions, and in‑flight emergencies** accounting for 240 (12.82%) sev 3 events (vs the second most sev 3 events caused by Landing Gear at 10.50%), and 262 (12.50%) sev 2 events(vs the highest sev-2 driver Landing Gear with 50.66%).
@@ -181,6 +180,20 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
 #### 4. Engine‑related systems are the second‑largest contributor to severe events
   - ATA 72/73/75 failures are driven by bleed‑air interactions, oil contamination, temperature/pressure anomalies, and sensor/valve faults.
   - These failures often cascade into ATA 21 symptoms (odor, smoke, pack trips), reinforcing cross‑system coupling.
+#### 5. A few Aircraft Dominate Grounding Writeups for Specific Systems
+  | Serial Number | System | System Grounding Writeups | Fleet Avg for System |
+  | --- | --- | --- | --- |
+  | 40764 | Fuel | 14 | 0.14 |
+  | 33521 | Fuel | 14 | 0.14 |
+  | 29522 | Air Conditioning | 12 | 0.18 |
+  | 44466 | Engine | 11 | 0.07 |
+  | 31163 | Fuel | 10 | 0.14 |
+  | 30905 | Air Conditioning | 10 | 0.18 |
+  | 33208 | Hydraulic Power | 10 | 0.06 |
+
+  - Although SDR data does not include delay minutes or labor hours, repeated severity‑3 events on a single aircraft strongly correlate with higher AOG exposure, increased MEL deferrals, and elevated risk of in‑flight turnbacks or diversions.
+  - Targeted engineering reviews for these aircraft—focusing on the specific systems driving repeated groundings—would likely reduce unplanned AOGs and improve dispatch reliability.
+  - Systems like Fuel (ATA 28), Air Conditioning (ATA 21), and Hydraulic Power (ATA 29) are far easier to troubleshoot and validate than engine‑related discrepancies, making them ideal candidates for focused reliability interventions.
 
 ---
 

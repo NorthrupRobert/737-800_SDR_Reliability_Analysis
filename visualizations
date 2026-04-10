@@ -39,7 +39,7 @@ Why it matters:
 
     Shows whether the system is improving or degrading
 
-🔥 3. Failure Mode Pareto Chart
+🔥 3. Failure Mode Pareto Chart (AC)
 
 You already have failure modes — now show them as a Pareto.
 
@@ -56,3 +56,62 @@ Why it matters:
     Shows the “vital few” failure modes
 
     Perfect for AC odor/smoke, door rigging, fuel indication
+
+4. fialure mode pareto chart for door
+
+5. treemap drilldown for ata/jasc/part(?)
+
+
+
+bar chart ata chpter frequency by discrepancies and gorunding writeups, heatmap of atas by severity frequency, line graph of ata frequency by month, bar chart of failed part count that are sev level 3, pie chart of sev 3 jobs by ata, tree map of failed parts for level 3 ac writeups, scorecard of cnd percentage for ac jobs, line graph of num of ac grounding writeups by month, heatmap of ac subsystems by severity count, bar graph of sev 3 count by jasc, heatmap for door discrepancies of failed part by failure type count, heat map of aircraft serial by ata chapter with counts of grounding writeups, tree map of drilldown jasc and ata, Failure Mode Pareto Chart for ac, failure mode apreto chart for door
+
+
+
+## Dashboards
+Dashboard 1 — Fleet Overview
+
+    ATA frequency bar chart
+
+    ATA × severity heatmap
+
+    ATA trend line
+
+    Sev‑3 pie chart
+
+    CND scorecard
+
+    MTBF‑style failure rate line
+
+Dashboard 2 — System Deep Dives
+
+    AC treemap
+
+    AC subsystem heatmap
+
+    AC failure mode Pareto
+
+    Door heatmap
+
+    Door failure mode Pareto
+
+    Fuel subsystem bar chart
+
+Dashboard 3 — Tail‑Number Hotspots
+
+    Aircraft × ATA heatmap
+
+    Fleet average column
+
+    Top hotspot aircraft table
+
+    Tail‑specific drill‑downs
+
+Dashboard 4 — Failure Mode & Component Analytics
+
+    Sev‑3 failed part bar chart
+
+    ATA → JASC treemap
+
+    Sankey (optional)
+
+    Additional Pareto charts
