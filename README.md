@@ -181,6 +181,9 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
   - ATA 72/73/75 failures are driven by bleed‑air interactions, oil contamination, temperature/pressure anomalies, and sensor/valve faults.
   - These failures often cascade into ATA 21 symptoms (odor, smoke, pack trips), reinforcing cross‑system coupling.
 #### 5. A few Aircraft Dominate Grounding Writeups for Specific Systems
+**ISSUE: REMOVED 'N' FROM SOME REG #**
+**ISSUE: SOMETIME REFER TO REG # AS 'SERIAL NUMBER'**
+**ISSUE: DISCREPANCY BETWEEN FLEET AVG BELOW AND FIGURES FOUND IN TAIL_HOTSPOTS (SEE 'FUEL OUTLIERS' VIZ)**
   | Serial Number | System | System Grounding Writeups | Fleet Avg for System |
   | --- | --- | --- | --- |
   | 40764 | Fuel | 14 | 0.14 |
@@ -191,6 +194,7 @@ Severe events in the AA 737‑800 fleet are dominated by three systems: AC/Press
   | 30905 | Air Conditioning | 10 | 0.18 |
   | 33208 | Hydraulic Power | 10 | 0.06 |
 
+  - Aircraft **40764** and **33521** both had high fuel-related grounding issues over the past 3 year period, measuring **22x the fleet average**. This is indicitive of unique fuel system issues related to aircraft that are negatively impacting our operational efficiency, and creating preventable, signifigant flight diversions.
   - Although SDR data does not include delay minutes or labor hours, repeated severity‑3 events on a single aircraft strongly correlate with higher AOG exposure, increased MEL deferrals, and elevated risk of in‑flight turnbacks or diversions.
   - Targeted engineering reviews for these aircraft—focusing on the specific systems driving repeated groundings—would likely reduce unplanned AOGs and improve dispatch reliability.
   - Systems like Fuel (ATA 28), Air Conditioning (ATA 21), and Hydraulic Power (ATA 29) are far easier to troubleshoot and validate than engine‑related discrepancies, making them ideal candidates for focused reliability interventions.

@@ -63,7 +63,7 @@ Why it matters:
 
 # Dashboard 1 — Fleet Overview
 - ATA frequency bar chart
-- ATA × severity heatmap
+- ATA x severity heatmap
 - ATA trend line
 - Sev‑3 pie chart
 - CND scorecard
@@ -82,6 +82,29 @@ Why it matters:
 - Fleet average column
 - Top hotspot aircraft table
 - Tail‑specific drill‑downs
+- A. Tail‑specific rate vs fleet average (the strongest story)
+    This is the punchline:
+        Each aircraft has ~23× more Sev‑3 fuel issues than the fleet average.
+    This is the kind of insight that gets engineering attention immediately.
+    How to show it:
+    A simple bar chart:
+        X‑axis: Aircraft tail
+        Y‑axis: Sev‑3 fuel issues
+        Highlight the two tails in red
+        Add a reference line at the fleet average (0.62)
+    This visually screams “outlier.”
+- B. Contribution to total fuel issues (secondary story)
+    This is the waffle chart story:
+        Two aircraft represent 15% of all Sev‑3 fuel issues.
+    This is visually powerful but less operationally meaningful than the rate ratio.
+    Still worth showing.
+- C. Distribution shape (statistical story)
+    Plot a histogram of Sev‑3 fuel issues per aircraft.
+    You will see:
+        95% of aircraft at 0–1
+        A long tail
+        Two extreme outliers at 14
+    This is reliability gold.
 
 # Dashboard 4 — Failure Mode & Component Analytics
 - Sev‑3 failed part bar chart
