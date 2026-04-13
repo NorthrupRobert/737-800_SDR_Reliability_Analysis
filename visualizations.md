@@ -62,23 +62,33 @@ Why it matters:
 
 
 # Dashboard 1 — Fleet Overview
-- ATA frequency bar chart
-- ATA x severity heatmap
-- ATA trend line
-- Sev‑3 pie chart
-- CND scorecard
+- * Sev‑3 pie chart (AC 13%, Landing gear 10.5%, fuel 10%, Doors 10%, Other 57%)
+- * ATA trend line (Top Grounding Systems Do Not Show Seasonality)
+- * Failed Parts by Frequency (shows MOST grouding events are CND'd across fleet)
+-  * Highest grounding and discrepancy atas bar chart (shows ac as top)
+- * CND scorecard (9%, -1% from last year)
+- * Grounding events scorecard (748, up from 655 in 2024 and 421 in 2023 -- doesn't show relationship to # of flights?)
 - MTBF‑style failure rate line
 
-# Dashboard 2 — System Deep Dives
-- AC treemap
-- AC subsystem heatmap
-- AC failure mode Pareto
-- Door heatmap
-- Door failure mode Pareto
-- Fuel subsystem bar chart
+# Dashboard 2 — AC Deepdive
+- * AC treemap of failure parts (lots of CND)
+- * AC subsystem heatmap x severity x frequency (46% of grounding caused by ac dist)
+- * AC subsystem fialure Pareto (high ac dist)
+- * CND Scorecard for grounding (35%)
 
-# Dashboard 3 — Tail‑Number Hotspots
-- Aircraft × ATA heatmap
+# Dashboard 3 — Door System Deepdive
+- * Bar chart of highest overall occuring grounding JASC (shows passenger/crew door highest)
+- * Door part failure x failure mode heatmap
+- * Door part failures pareto chart
+  * Door jasc failures pareto chart
+- Sev‑3 failed part bar chart
+- ATA → JASC treemap
+- Sankey (optional)
+- Additional Pareto charts
+
+# Dashboard 4 — Tail‑Number Hotspots
+- * Aircraft × ATA heatmap (only show top failing planes for that ata)
+- * Bar chart of all tails in fleet by grounding fuel discrepancies, highlighting two tails with 22x fleet average
 - Fleet average column
 - Top hotspot aircraft table
 - Tail‑specific drill‑downs
@@ -105,9 +115,3 @@ Why it matters:
         A long tail
         Two extreme outliers at 14
     This is reliability gold.
-
-# Dashboard 4 — Failure Mode & Component Analytics
-- Sev‑3 failed part bar chart
-- ATA → JASC treemap
-- Sankey (optional)
-- Additional Pareto charts
