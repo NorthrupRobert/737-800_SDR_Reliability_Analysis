@@ -69,6 +69,11 @@ Why it matters:
 - * CND scorecard (9%, -1% from last year)
 - * Grounding events scorecard (748, up from 655 in 2024 and 421 in 2023 -- doesn't show relationship to # of flights?)
 - MTBF‑style failure rate line
+- KPIs 
+    * CND Rate
+    * MTBF
+    * Sev-3 Rate (grounding rate)
+    * Grounds/year
 
 # Dashboard 2 — AC Deepdive
 - * AC treemap of failure parts (lots of CND)
