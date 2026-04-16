@@ -305,19 +305,16 @@ Guide arm/handle failures often repeat on the same aircraft.
 - Review probe/compensator replacement intervals
 - Add window seal/crazing inspections to heavy checks
 
-
 ---
 
 ## APPENDIX
-- ATA Chapter
-- JASC
-- AOG
-- IFE
-- Severity Level, Safety (These categories were defined by me to categorize safety-failure related events and guage operational impact of each of these discrepancies in our fleet)
+- **AOG (Aircraft on Ground)**
+- **ATA Chapter (often referred to as "ATA" in this text)**
+- **CND (Could Not Duplicate)**
+- **IFE (In Flight Emergency**
+- **JASC**
+- **Severity Level**: Pertrains to safety (These categories were defined by me to categorize safety-failure related events and guage operational impact of each of these discrepancies in our fleet)
   - **3**: Emergencies that resulted in aborted flights, AOG, IFE, diversions, leaks in safety-critical systems, etc. *(e.g. "EMERGENCY DECLARED", "ABORTED TAKEOFF", "IFE", "HYDRO LEAK")*
   - **2**: Discrepancies resulting in failed, critical systems that could soon result in an emergency should they not be addressed. *(e.g. "BSU #1 INOP, FLIGHT NOT GROUNDED", "PACK FAILURE", "AUTOPILOT DISCONNECT")*
   - **1**: Avionics, comms, electrical, and lighting issues that are not safety critical but impact operational ability *(e.g. "AUTO PILOT INOP", "EMER LIGHT OUT")*
   - **0**: Non-safety related discrepancy *(e.g. "TRAY TABLE DIFFICULT TO UNFOLD", "GALLEY LIGHT INOP")*
-
-
-  
